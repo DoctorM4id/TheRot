@@ -32,7 +32,7 @@ All visual, audio, and branding assets are strictly proprietary. This includes, 
 * Textures (`.png`)
 * 3D Models and Animations (`.json`, `.bbmodel`)
 * Sound effects and music (`.ogg`)
-* Mod name, logos, and custom character designs
+* Mod assets, logos, and custom model designs, anything related to identity of the mod.
 
 You **may not** redistribute, modify, or reuse these assets in any public forks, separate mods, or commercial projects without explicit written permission from the copyright holders.
 
