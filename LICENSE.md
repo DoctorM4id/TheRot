@@ -1,5 +1,7 @@
 <img width="982" height="273" alt="license" src="https://github.com/user-attachments/assets/de2cb6c9-75d2-4b18-9a26-f64b96a94449" />
 
+---
+
 # MIT Code & ARR Assets License
 
 This project uses a dual-licensing structure to separate the functional source code from the unique visual assets and brand identity.
