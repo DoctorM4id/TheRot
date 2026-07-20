@@ -1,0 +1,58 @@
+loomx.loom_version="1.16-SNAPSHOT"
+
+mod.id = "rot"
+mod.name = "The Rot"
+mod.group = "team.stoatdev"
+mod.version = "0.1.0"
+mod.channel_tag = "-alpha.4"
+mod.description = "A W.I.P. infection mod that brings the rot from Rain World to Minecraft!"
+mod.authors = ["DoctorM4id"]
+mod.contributors = ["DoctorM4id"]
+mod.inception_year = "2026"
+mod.license.name = "MIT Code & ARR Assets"
+mod.license.url = "https://github.com/DoctorM4id/TheRot?tab=License-1-ov-file"
+mod.license.dist = "repo"
+mod.sources_url = "https://github.com/DoctorM4id/TheRot"
+mod.homepage_url = "https://modrinth.com/mod/rot"
+mod.issues_url = "https://github.com/DoctorM4id/TheRot/issues"
+mod.discord_url = "https://discord.stoatdev.team"
+[[mod.pom.developers]]
+id = "doctorm4id"
+name = "DoctorM4id"
+url = "https://github.com/ghost"
+
+[fabric]
+deps.fabric-loader = "0.19.2"
+
+[fabric."1.20.1"]
+deps.minecraft = "1.20.1"
+deps.fabric-api = "0.92.9+1.20.1"
+deps.modmenu = "7.2.2"
+
+[fabric."1.21.1"]
+deps.minecraft = "1.21.1"
+deps.fabric-api = "0.116.13+1.21.1"
+deps.modmenu = "11.0.4"
+
+[fabric."26.1.2"]
+deps.minecraft = "26.1.2"
+deps.fabric-api = "0.146.1+26.1.2"
+deps.modmenu = "18.0.0-alpha.8"
+publish.additionalVersions = ["26.1.1", "26.1"]
+
+[forge]
+
+[forge."1.20.1"]
+deps.minecraft = "1.20.1"
+deps.forge = "47.4.20"
+
+[neoforge]
+
+[neoforge."1.21.1"]
+deps.minecraft = "1.21.1"
+deps.neoforge = "21.1.235"
+
+[neoforge."26.1.2"]
+deps.minecraft = "26.1.2"
+deps.neoforge = "26.1.2.29-beta"
+publish.additionalVersions = ["26.1.1", "26.1"]
