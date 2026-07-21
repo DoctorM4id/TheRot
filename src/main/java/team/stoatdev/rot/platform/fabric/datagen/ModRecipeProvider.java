@@ -2,6 +2,7 @@ package team.stoatdev.rot.platform.fabric.datagen;
 
 //? fabric && != 1.20.1 {
 
+import net.minecraft.data.PackOutput;
 import team.stoatdev.rot.ModTemplate;
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -29,7 +30,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		this.registriesFuture = registriesFuture;
 	}
 
-
 	//? if 1.21.1 {
 	/*@Override
 	public void buildRecipes(RecipeOutput recipeOutput) {
@@ -37,9 +37,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		provider.buildRecipes(recipeOutput);
 	}
 	*///? } else {
-	@Override
+	// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
+/*	@Override
 	protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 		return new IntRecipeProvider(provider, recipeOutput);
+	}*/
+	@Override
+	public void buildRecipes(RecipeOutput exporter) {
+
 	}
 	//? }
 
@@ -50,6 +55,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 
 	static class IntRecipeProvider extends RecipeProvider {
+
+		public IntRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
+			super(packOutput, completableFuture);
+		}
 
 		//? if 1.21.1 {
 		/*public IntRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
@@ -62,7 +71,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 					.save(recipeOutput, "lava_chicken_recipe");
 		}
 		*///? } else {
-		protected IntRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+		// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
+/*		protected IntRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 			super(provider, recipeOutput);
 		}
 
@@ -71,6 +81,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			final var itemLookup = registries.lookupOrThrow(Registries.ITEM);
 			buildLavaChickenRecipe(ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.FOOD, Items.COOKED_CHICKEN))
 					.save(output, "lava_chicken_recipe");
+		}*/
+		@Override
+		public void buildRecipes(RecipeOutput recipeOutput) {
+
 		}
 		//? }
 
