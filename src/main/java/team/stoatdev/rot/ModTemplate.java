@@ -17,9 +17,9 @@ import team.stoatdev.rot.platform.fabric.FabricPlatform;
 @SuppressWarnings("LoggingSimilarMessage")
 public class ModTemplate {
 
-	public static final String MOD_ID = /*$ mod_id*/ "modtemplate";
+	public static final String MOD_ID = /*$ mod_id*/ "rot";
 	public static final String MOD_VERSION = /*$ mod_version*/ "0.1.0";
-	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "Mod Template";
+	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "The Rot";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	private static final Platform PLATFORM = createPlatformInstance();

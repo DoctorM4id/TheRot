@@ -13,12 +13,6 @@ stonecutter {
 	}
 }
 
-buildscript {
-	dependencies {
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
-	}
-}
-
 platform {
 	loader = "neoforge"
 	dependencies {
@@ -66,14 +60,20 @@ neoForge {
 
 repositories {
 	mavenCentral()
-	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
-	maven("https://thedarkcolour.github.io/KotlinForForge/") { name = "kotlinforforge" }
+	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") {
+		name = "Modrinth"
+	}
+
+	maven {
+		name = "Kotlin for Forge"
+		setUrl("https://thedarkcolour.github.io/KotlinForForge/")
+	}
 }
 
 dependencies {
 	// implementation(libs.moulberry.mixinconstraints)
 	// jarJar(libs.moulberry.mixinconstraints)
-	implementation("thedarkcolour:kotlinforforge:1.16.0")
+	// implementation("thedarkcolour:kotlinforforge:${prop("deps.neoforge-language-kotlin")}")
 }
 
 tasks.named("createMinecraftArtifacts") {

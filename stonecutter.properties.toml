@@ -53,7 +53,7 @@ deps.forge = "47.4.20"
 
 [neoforge."1.21.1"]
 deps.minecraft = "1.21.1"
-deps.neoforge = "21.1.235"
+deps.neoforge = "21.1.242"
 
 [neoforge."26.1.2"]
 deps.minecraft = "26.1.2"
