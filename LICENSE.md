@@ -8,8 +8,6 @@ This project uses a dual-licensing structure to separate the functional source c
 
 ## 1. Source Code (MIT License)
 
-All source code (`.java`, `.json` configuration logic, build scripts) is licensed under the MIT License:
-
 Copyright (c) 2026 DoctorM4id / StoatDev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
