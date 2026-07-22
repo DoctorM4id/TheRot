@@ -1,5 +1,7 @@
 <img width="982" height="273" alt="coc" src="https://github.com/user-attachments/assets/a47ffa98-fcb9-452c-b4b6-4726b3ad5e48" />
 
+Ngl lie to you.... I just used a template I don't even know what this means tbh... ;w;
+
 ---
 
 # Contributor Covenant Code of Conduct
