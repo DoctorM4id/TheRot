@@ -1,3 +1,7 @@
+<img width="982" height="273" alt="sp" src="https://github.com/user-attachments/assets/c22f0633-fe2b-4df9-b4fb-632a5efc9088" />
+
+---
+
 # Security Policy
 
 ## Supported Versions
