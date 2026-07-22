@@ -28,3 +28,5 @@
 
 - Switching over to stonecutter, which makes multi version/loaders alot easier to develop and manage. :3
 - Next versioning will now be `0.1.0-alpha.4`.
+
+- If your looking for alpha v1.0... it's not here. ;) Will most likely try to find it again and upload as different branch.
