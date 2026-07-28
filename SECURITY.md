@@ -8,15 +8,15 @@
 
 These are the versions currently supported or planned:
 
-| Overview | Status             | Fabric             | Neoforge           | Forge              |
-| -------- | ------------------ | ------------------ | ------------------ | ------------------ |
-| 26.1.1 - 26.1.2 | Skipped | - | - | - |
-| 26.1     | Planned            | 📝 Planned        | 📝 Planned        | :x:                 |
-| 1.21.2 - 1.21.11 | Skipped | - | - | - |
-| 1.21.1   | Continued Support  | :white_check_mark: | 📝 Planned        | :x:                |
-| 1.20.2 - 1.20.10 | Skipped | - | - | - |
-| 1.20.1   | Continued Support  | :white_check_mark: | -       | :x:?               |
-| < 1.20.1   | Won't Support | - | - | - |
+| Overview | Status             | Fabric             | Neoforge           | Forge              | Mod Version [Old Format] |
+| -------- | ------------------ | ------------------ | ------------------ | ------------------ | ----------- |
+| 26.1.1 - 26.1.2 | Skipped | - | - | - | - |
+| 26.1     | Planned            | 📝 Planned        | 📝 Planned        | :x:                 | - |
+| 1.21.2 - 1.21.11 | Skipped | - | - | - | - |
+| 1.21.1   | Continued Support  | :white_check_mark: | 📝 Planned        | :x:                | Alpha 1.0+1.21.1-fabric |
+| 1.20.2 - 1.20.10 | Skipped | - | - | - | - |
+| 1.20.1   | Continued Support  | :white_check_mark: | -       | :x:?               | Alpha 1.0+1.21.1-fabric |
+| < 1.20.1   | Won't Support | - | - | - | - |
 
 ## Reporting a Vulnerability
 
