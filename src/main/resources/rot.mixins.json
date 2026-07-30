@@ -1,11 +1,13 @@
 {
-  "package": "team.stoatdev.rot.mixin",
+  "package": "dev.doctorm4id.rot.mixin",
   "required": true,
   "minVersion": "0.8",
   "compatibilityLevel": "${java}",
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [],
+  "mixins": [
+    "ExampleMixin"
+  ],
   "client": []
 }

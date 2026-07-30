@@ -1,6 +1,6 @@
-package team.stoatdev.rot.mixin;
+package dev.doctorm4id.rot.mixin;
 
-import team.stoatdev.rot.ModTemplate;
+import team.stoatdev.rot.portedover.ModTemplate;
 import dev.kikugie.fletching_table.annotation.MixinEnvironment;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
