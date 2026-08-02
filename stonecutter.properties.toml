@@ -2,7 +2,7 @@ loomx.loom_version="1.16-SNAPSHOT"
 
 mod.id = "rot"
 mod.name = "The Rot"
-mod.group = "team.stoatdev"
+mod.group = "dev.doctorm4id"
 mod.version = "0.1.0"
 mod.channel_tag = "-alpha.4"
 mod.description = "A W.I.P. infection mod that brings the rot from Rain World to Minecraft!"
@@ -19,7 +19,7 @@ mod.discord_url = "https://discord.stoatdev.team"
 [[mod.pom.developers]]
 id = "doctorm4id"
 name = "DoctorM4id"
-url = "https://github.com/ghost"
+url = "https://github.com/doctorm4id"
 
 [fabric]
 deps.fabric-loader = "0.19.2"
@@ -54,6 +54,7 @@ deps.forge = "47.4.20"
 [neoforge."1.21.1"]
 deps.minecraft = "1.21.1"
 deps.neoforge = "21.1.242"
+deps.neoforge-language-kotlin = "5.12.0"
 
 [neoforge."26.1.2"]
 deps.minecraft = "26.1.2"

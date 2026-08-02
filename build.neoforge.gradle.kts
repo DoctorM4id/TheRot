@@ -1,6 +1,7 @@
 plugins {
 	id("mod-platform")
 	id("net.neoforged.moddev")
+	id("kotlin")
 }
 
 stonecutter {
@@ -10,6 +11,12 @@ stonecutter {
 	replacements.string(current.parsed >= "1.21.11") {
 		replace("ResourceLocation", "Identifier")
 		replace("location()", "identifier()")
+	}
+}
+
+buildscript {
+	dependencies {
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
 	}
 }
 
@@ -73,7 +80,7 @@ repositories {
 dependencies {
 	// implementation(libs.moulberry.mixinconstraints)
 	// jarJar(libs.moulberry.mixinconstraints)
-	// implementation("thedarkcolour:kotlinforforge:${prop("deps.neoforge-language-kotlin")}")
+	implementation("thedarkcolour:kotlinforforge:${prop("deps.neoforge-language-kotlin")}")
 }
 
 tasks.named("createMinecraftArtifacts") {

@@ -9,12 +9,12 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 //? neoforge {
 
 @EventBusSubscriber(modid = TheRot.MOD_ID, value = [Dist.CLIENT])
-class NeoforgeClientEventSubscriber {
+object NeoforgeClientEventSubscriber {
 
+	@JvmStatic
 	@SubscribeEvent
-	fun onClientSetup(event: FMLClientSetupEvent?) {
+	fun onClientSetup(event: FMLClientSetupEvent) {
 		TheRot().onInitializeClient()
 	}
 }
-
 //? }

@@ -9,8 +9,9 @@ import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent
 
 @EventBusSubscriber
-class NeoforgeEventSubscriber {
+object NeoforgeEventSubscriber {
 
+	@JvmStatic
 	@SubscribeEvent
 	fun onPlayerDamage(event: LivingDamageEvent.Post) {
 		if (event.entity is ServerPlayer && event.newDamage > 0) {

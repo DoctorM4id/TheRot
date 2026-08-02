@@ -1,8 +1,8 @@
 package dev.doctorm4id.rot.event
 
+import dev.doctorm4id.rot.TheRot
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.level.ServerPlayer
-import team.stoatdev.rot.portedover.ModTemplate
 import java.util.Objects
 
 class ExampleEventHandler {
@@ -15,9 +15,9 @@ class ExampleEventHandler {
 		//? if >= 26.1.2
 		//boolean pvp = Objects.requireNonNull(player.level()).isPvpAllowed();
 		if (pvp) {
-			ModTemplate.LOGGER.info("{} took damage. PVP is allowed.", player.displayName)
+			TheRot.LOGGER.info("{} took damage. PVP is allowed.", player.displayName)
 		} else {
-			ModTemplate.LOGGER.info("{} took damage. PVP is disallowed.", player.displayName)
+			TheRot.LOGGER.info("{} took damage. PVP is disallowed.", player.displayName)
 		}
 		//?}
 	}

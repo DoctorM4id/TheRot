@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory
 /*import dev.doctorm4id.rot.platform.fabric.FabricPlatform
 *///?} neoforge {
 import dev.doctorm4id.rot.platform.neoforge.NeoforgePlatform
- //? }
+import org.apache.commons.logging.Log
+
+//? }
 
 // Move platforms from java template to kotlin.
 // [X] Fabric - Done except for ModRecipeProvider, FabricDataGeneratorEntryPoint.
@@ -18,10 +20,11 @@ import dev.doctorm4id.rot.platform.neoforge.NeoforgePlatform
 @SuppressWarnings("LoggingSimilarMessage")
 class TheRot {
 	companion object {
-		const val MOD_ID: String = /*$ mod_id*/"rot";
-		const val MOD_VERSION: String =  /*$ mod_version*/"0.1.0";
-		const val MOD_FRIENDLY_NAME: String =  /*$ mod_name*/"The Rot";
+		const val MOD_ID: String = /*$ mod_id*/"rot"
+		const val MOD_VERSION: String =  /*$ mod_version*/"0.1.0"
+		const val MOD_FRIENDLY_NAME: String =  /*$ mod_name*/"The Rot"
 
+		@JvmField
 		val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
 
 		private val PLATFORM: Platform = TheRot().createPlatformInstance()

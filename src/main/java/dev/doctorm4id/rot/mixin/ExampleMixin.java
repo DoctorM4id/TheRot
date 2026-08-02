@@ -1,6 +1,6 @@
 package dev.doctorm4id.rot.mixin;
 
-import team.stoatdev.rot.portedover.ModTemplate;
+import dev.doctorm4id.rot.TheRot;
 import dev.kikugie.fletching_table.annotation.MixinEnvironment;
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,7 @@ public class ExampleMixin {
 
 	@Inject(method = "loadLevel", at = @At("RETURN"))
 	private void afterLoadLevel(CallbackInfo ci) {
-		ModTemplate.LOGGER.info("Level Loaded!");
+		TheRot.LOGGER.info("Level Loaded!");
 	}
 
 }
