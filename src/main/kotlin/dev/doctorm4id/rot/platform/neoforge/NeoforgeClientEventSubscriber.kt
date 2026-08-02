@@ -8,7 +8,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 
 //? neoforge {
 
-@EventBusSubscriber(modid = TheRot.MOD_ID, value = [Dist.CLIENT])
+/*@EventBusSubscriber(modid = TheRot.MOD_ID, value = [Dist.CLIENT])
 object NeoforgeClientEventSubscriber {
 
 	@JvmStatic
@@ -17,4 +17,4 @@ object NeoforgeClientEventSubscriber {
 		TheRot().onInitializeClient()
 	}
 }
-//? }
+*///? }

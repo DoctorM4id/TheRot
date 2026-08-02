@@ -1,6 +1,6 @@
 //? fabric && != 1.20.1 {
 
-/*import net.minecraft.data.PackOutput;
+import net.minecraft.data.PackOutput;
 import team.stoatdev.rot.portedover.ModTemplate;
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -15,7 +15,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 
 //? if 1.21.1
 
-//import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
@@ -27,13 +27,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 
 	//? if 1.21.1 {
-	/^@Override
+	@Override
 	public void buildRecipes(RecipeOutput recipeOutput) {
 		IntRecipeProvider provider = new IntRecipeProvider(this.output, this.registriesFuture);
 		provider.buildRecipes(recipeOutput);
 	}
-	^///? } else {
-	// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
+	//? } else {
+	/*// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
 /^	@Override
 	protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 		return new IntRecipeProvider(provider, recipeOutput);
@@ -42,7 +42,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	public void buildRecipes(RecipeOutput exporter) {
 
 	}
-	//? }
+	*///? }
 
 
 	@Override
@@ -53,7 +53,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	static class IntRecipeProvider extends RecipeProvider {
 
 		//? if 1.21.1 {
-		/^public IntRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
+		public IntRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
 			super(packOutput, completableFuture);
 		}
 
@@ -62,8 +62,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			buildLavaChickenRecipe(ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.COOKED_CHICKEN))
 					.save(recipeOutput, "lava_chicken_recipe");
 		}
-		^///? } else {
-		// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
+		//? } else {
+		/*// doesn't work, prob since I switched this 1.19.2 code to 1.20.1. :C
 /^		protected IntRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 			super(provider, recipeOutput);
 		}
@@ -78,7 +78,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		public void buildRecipes(RecipeOutput recipeOutput) {
 
 		}
-		//? }
+		*///? }
 
 		private ShapelessRecipeBuilder buildLavaChickenRecipe(ShapelessRecipeBuilder builder) {
 			return builder.requires(Items.LAVA_BUCKET)
@@ -88,4 +88,4 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		}
 	}
 }
-*///?}
+//?}

@@ -2,7 +2,7 @@ package dev.doctorm4id.rot.platform.neoforge
 
 //? neoforge {
 
-import dev.doctorm4id.rot.event.ExampleEventHandler
+/*import dev.doctorm4id.rot.event.ExampleEventHandler
 import net.minecraft.server.level.ServerPlayer
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -22,4 +22,4 @@ object NeoforgeEventSubscriber {
 	}
 }
 
-//? }
+*///? }
