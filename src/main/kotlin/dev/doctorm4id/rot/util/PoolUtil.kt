@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.Block
 import kotlin.random.Random
 
 object PoolBlocks {
+
 	private var totalWeight: Int = 0
 	private var entries: ArrayList<PoolEntry> = ArrayList()
 

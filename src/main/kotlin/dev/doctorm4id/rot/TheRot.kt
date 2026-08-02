@@ -13,12 +13,9 @@ import org.apache.commons.logging.Log
 
 *///? }
 
-// Move platforms from java template to kotlin.
-// [X] Fabric - Done except for ModRecipeProvider, FabricDataGeneratorEntryPoint.
-// [X] Neoforge
-
 @SuppressWarnings("LoggingSimilarMessage")
 class TheRot {
+
 	companion object {
 		const val MOD_ID: String = /*$ mod_id*/"rot"
 		const val MOD_VERSION: String =  /*$ mod_version*/"0.1.0"

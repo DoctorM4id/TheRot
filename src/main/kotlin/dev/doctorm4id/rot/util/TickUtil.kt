@@ -5,6 +5,7 @@ import net.minecraft.world.level.Level
 import kotlin.math.abs
 
 object TickUtil {
+
 	val TICKS_PER_SECOND: Int = 20
 	val TICKS_PER_MINUTE: Int = TICKS_PER_SECOND * 60
 	val TICKS_PER_HOUR: Int = TICKS_PER_MINUTE * 60

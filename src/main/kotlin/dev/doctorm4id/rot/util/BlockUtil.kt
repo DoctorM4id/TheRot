@@ -11,6 +11,7 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 object BlockUtil {
+
 	/**
 	 * Checks if the block state is generally replaceable
 	 * @param blockState The target block state
