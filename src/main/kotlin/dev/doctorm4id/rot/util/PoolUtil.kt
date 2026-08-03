@@ -52,6 +52,7 @@ object PoolBlocks {
 }
 
 class PoolEntry(val block: Block?, var weight: Int) : Comparable<PoolEntry> {
+
 	var requiresExperimentalMode: Boolean = false
 
 	fun requireExperimentalMode() {
