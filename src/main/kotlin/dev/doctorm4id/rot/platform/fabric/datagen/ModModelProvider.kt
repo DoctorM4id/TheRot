@@ -1,5 +1,7 @@
 package dev.doctorm4id.rot.platform.fabric.datagen
 
+//? fabric {
+
 import dev.doctorm4id.rot.TheRot
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
@@ -20,3 +22,5 @@ class ModModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
 		return TheRot.MOD_FRIENDLY_NAME+" Model Provider"
 	}
 }
+
+//?}
