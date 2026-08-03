@@ -54,12 +54,28 @@ object TickUtil {
 		return years * TICKS_PER_YEAR
 	}
 
+	/**
+	 * Checks if number of ticks has passed.
+	 * If event never occurred before, returns true.
+	 * @param lastTickTime The tick of when event last occurred.
+	 * @param currentTickTime The current tick.
+	 * @param ticks Minimum required waiting ticks that must pass before event can happen.
+	 * @return True if required number of ticks has passed or first occurrence. False otherwise
+	 */
 	fun hasTicksPassed(lastTickTime: Long, currentTickTime: Long, ticks: Long): Boolean {
 		if (lastTickTime == 0L) return true
 
 		return abs(currentTickTime - lastTickTime) >= ticks
 	}
 
+	/**
+	 * Checks if number of ticks has passed using level's current tick.
+	 * If event never occurred before, returns true.
+	 * @param lastTickTime The tick of when event last occurred.
+	 * @param level The world providing current tick.
+	 * @param ticks Minimum required waiting ticks that must pass before event can happen.
+	 * @return True if required number of ticks has passed or first occurrence. False otherwise
+	 */
 	fun hasTicksPassed(lastTickTime: Long, level: Level, ticks: Long): Boolean {
 		return hasTicksPassed(lastTickTime, level.gameTime, ticks)
 	}
