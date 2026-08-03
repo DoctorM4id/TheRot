@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory
 import dev.doctorm4id.rot.platform.fabric.FabricPlatform
 //?} neoforge {
 /*import dev.doctorm4id.rot.platform.neoforge.NeoforgePlatform
-import org.apache.commons.logging.Log
-
 *///? }
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -47,7 +45,7 @@ class TheRot {
 		*///?}
 	}
 
-	private fun id(path: String?): ResourceLocation {
+	fun id(path: String?): ResourceLocation {
 		//? > 1.20.1 {
 		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path!!)
 		//?} <= 1.20.1 {
@@ -55,7 +53,7 @@ class TheRot {
 		*///?}
 	}
 
-	private fun id(namespace: String?, path: String?): ResourceLocation {
+	fun id(namespace: String?, path: String?): ResourceLocation {
 		//? > 1.20.1 {
 		return ResourceLocation.fromNamespaceAndPath(namespace!!, path!!)
 		//?} <= 1.20.1 {
