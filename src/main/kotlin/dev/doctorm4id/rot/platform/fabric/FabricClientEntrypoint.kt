@@ -7,7 +7,7 @@ import dev.kikugie.fletching_table.annotation.fabric.Entrypoint
 import net.fabricmc.api.ClientModInitializer
 
 @Entrypoint("client")
-class FabricClientEntryPoint : ClientModInitializer {
+class FabricClientEntrypoint : ClientModInitializer {
 
 	override fun onInitializeClient() {
 		TheRot().onInitializeClient()
