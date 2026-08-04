@@ -3,6 +3,24 @@ plugins {
 	id("dev.kikugie.loom-back-compat")
 }
 
+val jvmTargetVersion = if (sc.current.parsed >= "1.20.5") 21 else 17
+
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(jvmTargetVersion))
+	}
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+	compilerOptions {
+		jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(jvmTargetVersion.toString()))
+	}
+}
+
+tasks.withType<JavaCompile>().configureEach {
+	options.release.set(jvmTargetVersion)
+}
+
 stonecutter {
 	val (version, loader) = current.project.split('-', limit = 2)
 	properties.tags(version, loader)

@@ -1,0 +1,68 @@
+{
+  "block.rot.cluster_cyst": "Cluster Cyst",
+  "block.rot.blooming_cyst": "Blooming Cyst",
+  "block.rot.rotted_block": "Rotted Block",
+  "block.rot.rotted_stairs": "Rotted Stairs",
+  "block.rot.rotted_slab": "Rotted Slab",
+  "block.rot.rotted_leaves": "Rotted Leaves",
+  "block.rot.rotted_grass": "Rotted Grass",
+  "block.rot.rotted_grass_short": "Rotted Short Grass",
+
+  "effect.rot.reprieve": "Reprieve",
+  "effect.rot.rotting": "Rot Cancer",
+  "effect.rot.reset_rotting_stage_msg1": "§7You bought yourself more time...",
+  "effect.rot.reset_rotting_stage_msg2": "§7You feel a bit better...",
+  "effect.rot.reset_rotting_stage_msg3": "§7The rot begins to slow...",
+  "effect.rot.reset_rotting_stage_msg4": "§7It wont be effective forever...",
+
+  "itemGroup.rot.main": "The Rot",
+  "itemGroup.rot.dev": "The Rot: Development",
+
+  "item.rot.cancer_meds": "Cancer Meds",
+
+  "item.rot.dev_cursor_wand": "Cursor Wand",
+  "tooltip.rot.dev_conversion_wand": "§7Testing single block infection stuff, rot-tuah.",
+  "tooltip.rot.dev_cursor_wand": "§7Used to spawn infection cursors.",
+
+  "item.rot.coin_of_contribution": "Coin of Contribution ❤",
+  "tooltip.rot.coin_of_contribution": "§7A little gift from the value you contributed to this mod,",
+  "tooltip.rot.coin_of_contribution2": "§7The Rot would probably not exist or be in this current state without you!",
+  "tooltip.rot.coin_of_contribution3": "§7Thank you, and enjoy The Rot mod!",
+
+
+  "rot.midnightconfig.title": "The Rot Config",
+
+  "rot.midnightconfig.category.general": "General",
+
+  "rot.midnightconfig.allowBloomingCystCursorSpawn": "Allow Blooming Cyst Cursor Spawn",
+  "rot.midnightconfig.bloomingCystCursorSpawnChance": "Blooming Cyst Cursor Spawn Chance [1 in X]",
+
+
+  "rot.midnightconfig.category.virtual_cursors": "Cursors",
+
+  "rot.midnightconfig.maxRange": "Max Range In Blocks",
+  "rot.midnightconfig.doIsNotSolidCheck": "Allow Is Not Solid Check",
+  "rot.midnightconfig.doMaxRangeCheck": "Allow Is Within Max Range Check",
+  "rot.midnightconfig.doMaxLifeTime": "Allow Max Life Time Check",
+  "rot.midnightconfig.maxLifeTimeMinutes": "Max Life Time In Minutes",
+  "rot.midnightconfig.doIsWaterCheck": "Allow Is Water Check",
+  "rot.midnightconfig.doIsAirCheck": "Allow Is Air Check",
+  "rot.midnightconfig.doIsVisitedPositionsCheck": "Allow Is Visited Positions Check",
+  "rot.midnightconfig.doExposedToAirCheck": "Allow Is Exposed To Air Check",
+
+  "rot.midnightconfig.weight_heading": "Weight Settings",
+
+  "rot.midnightconfig.flora_weight": "Flora",
+  "rot.midnightconfig.small_flora_weight": "Small Flora",
+  "rot.midnightconfig.non_flora_weight": "Non-Flora (AIR)",
+  "rot.midnightconfig.benign_weight": "Benign Cyst",
+  "rot.midnightconfig.blooming_weight": "Blooming Cyst",
+
+  "rot.midnightconfig.performance_heading": "Performance Settings",
+
+  "rot.midnightconfig.searchIterationsPerTick": "Search Iterations Per Tick",
+  "rot.midnightconfig.maxCursorsPerTick": "Max Cursors Per Tick",
+
+
+  "rot.midnightconfig.category.rot_cancer": "Rot Cancer"
+}
