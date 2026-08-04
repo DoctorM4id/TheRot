@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.state.BlockBehaviour
 
 object RegistryUtil {
 
@@ -51,5 +52,13 @@ object RegistryUtil {
 			BuiltInRegistries.ITEM,
 			TheRot().id(name),
 			item)
+	}
+
+	fun copyBlockProperties(block: Block): BlockBehaviour.Properties {
+		//? if >=1.20.5 {
+		return BlockBehaviour.Properties.ofFullCopy(block);
+		//?} else {
+		/*return BlockBehaviour.Properties.copy(block);
+		*///?}
 	}
 }
