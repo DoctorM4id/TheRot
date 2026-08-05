@@ -5,7 +5,6 @@ package dev.doctorm4id.rot.platform.neoforge
 /*import dev.doctorm4id.rot.platform.Platform
 import net.neoforged.fml.ModList
 import net.neoforged.fml.loading.FMLLoader
-import net.neoforged.fml.loading.VersionInfo
 
 class NeoforgePlatform : Platform {
 
