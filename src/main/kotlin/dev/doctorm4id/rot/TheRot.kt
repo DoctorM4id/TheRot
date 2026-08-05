@@ -41,10 +41,6 @@ class TheRot {
 	fun onInitializeClient() {
 		LOGGER.info( "Initializing {} Client on {}", MOD_ID, xplat().loader() )
 		LOGGER.debug( "{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME )
-
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ROTTED_GRASS, RenderType.cutout())
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ROTTED_GRASS_SHORT, RenderType.cutout())
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ROTTED_LEAVES, RenderType.cutout())
 	}
 
 	fun xplat(): Platform { return PLATFORM }
