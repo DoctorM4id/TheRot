@@ -1,7 +1,27 @@
+import org.gradle.api.file.DuplicatesStrategy
+
 plugins {
 	id("mod-platform")
 	id("net.neoforged.moddev")
 	id("kotlin")
+}
+
+val jvmTargetVersion = if (sc.current.parsed >= "1.20.5") 21 else 17
+
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(jvmTargetVersion))
+	}
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+	compilerOptions {
+		jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(jvmTargetVersion.toString()))
+	}
+}
+
+tasks.withType<JavaCompile>().configureEach {
+	options.release.set(jvmTargetVersion)
 }
 
 stonecutter {
@@ -16,8 +36,12 @@ stonecutter {
 
 buildscript {
 	dependencies {
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.10")
 	}
+}
+
+tasks.processResources {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 platform {
@@ -80,7 +104,7 @@ repositories {
 dependencies {
 	// implementation(libs.moulberry.mixinconstraints)
 	// jarJar(libs.moulberry.mixinconstraints)
-	implementation("thedarkcolour:kotlinforforge:${prop("deps.neoforge-language-kotlin")}")
+	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("deps.neoforge-language-kotlin")}")
 }
 
 tasks.named("createMinecraftArtifacts") {
