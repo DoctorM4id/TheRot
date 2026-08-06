@@ -33,7 +33,7 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 				.mapColor(MapColor.COLOR_BLACK)
 		)}
 
-	val ROTTED_STAIR by blockWithItem {
+/*	val ROTTED_STAIR by blockWithItem {
 		StairBlock(
 			ROTTED_BLOCK().defaultBlockState(),
 			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
@@ -52,7 +52,7 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 	val ROTTED_FENCE by blockWithItem {
 		FenceBlock(
 			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
-		)}
+		)}*/
 
 	val ROTTED_LEAVES by blockWithItem {
 		LeavesBlock(BlockBehaviour.Properties.of()
@@ -69,10 +69,10 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 			.instabreak()
 		)}
 
-	val ROTTED_GRASS_SHORT by blockWithItem {
+/*	val ROTTED_GRASS_SHORT by blockWithItem {
 		RottedFloraBlock(
 			CommonUtil.copyBlockProperties(ROTTED_GRASS())
-		)}
+		)}*/
 
 	val NULL_CYAN by blockWithItem {
 		Block(BlockBehaviour.Properties.of()

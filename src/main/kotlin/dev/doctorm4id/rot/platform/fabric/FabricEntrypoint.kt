@@ -2,7 +2,7 @@ package dev.doctorm4id.rot.platform.fabric
 
 //? fabric {
 
-import dev.doctorm4id.rot.TheRot
+/*import dev.doctorm4id.rot.TheRot
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint
 import net.fabricmc.api.ModInitializer
@@ -28,4 +28,4 @@ class FabricEntrypoint : ModInitializer {
 	}
 }
 
-//? }
+*///? }

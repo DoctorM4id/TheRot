@@ -6,6 +6,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntity
+import java.lang.reflect.Modifier
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import kotlin.reflect.full.memberProperties
@@ -66,6 +67,7 @@ import kotlin.reflect.full.memberProperties
 abstract class ContentRegistry(val modId: String) {
 
 	private val entries = mutableListOf<RegistryObject<*>>()
+	private var forced = false
 
 	/**
 	 * Creates a [RegistryObject] then adds it to the [entries].

@@ -2,7 +2,7 @@ package dev.doctorm4id.rot.platform.fabric
 
 //? fabric {
 
-import dev.doctorm4id.rot.event.ExampleEventHandler
+/*import dev.doctorm4id.rot.event.ExampleEventHandler
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.damagesource.DamageSource
@@ -21,4 +21,4 @@ class FabricEventSubscriber {
 	}
 }
 
-//? }
+*///? }

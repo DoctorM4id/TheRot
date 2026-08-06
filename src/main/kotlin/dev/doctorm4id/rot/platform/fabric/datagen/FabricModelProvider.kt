@@ -2,7 +2,7 @@ package dev.doctorm4id.rot.platform.fabric.datagen
 
 //? fabric {
 
-import dev.doctorm4id.rot.TheRot
+/*import dev.doctorm4id.rot.TheRot
 import dev.doctorm4id.rot.core.ModRegistry
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
@@ -41,4 +41,4 @@ class FabricModelProvider(output: FabricDataOutput) : FabricModelProvider(output
 	}
 }
 
-//? }
+*///? }
