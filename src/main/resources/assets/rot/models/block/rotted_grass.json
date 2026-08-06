@@ -1,7 +1,7 @@
 {
+  "render_type": "minecraft:cutout",
   "parent": "block/cross",
   "ambientocclusion": false,
-  "render_type": "minecraft:cutout",
   "textures": {
     "cross": "rot:block/rotted_grass"
   }

@@ -3,6 +3,7 @@ package dev.doctorm4id.rot.platform.fabric
 //? fabric {
 
 import dev.doctorm4id.rot.TheRot
+import dev.doctorm4id.rot.core.ModRenderLayers
 //? <= 1.20.1 {
 /*import dev.doctorm4id.rot.core.ModRenderLayers
 *///? }
@@ -17,11 +18,9 @@ class FabricClientEntrypoint : ClientModInitializer {
 	override fun onInitializeClient() {
 		TheRot().onInitializeClient()
 
-		//? <= 1.20.1 {
-		/*ModRenderLayers.CUTOUT_BLOCKS.forEach { block ->
+		ModRenderLayers.CUTOUT_BLOCKS.forEach { block ->
 			BlockRenderLayerMap.INSTANCE.putBlock(block, RenderType.cutout())
 		}
-		*///? }
 	}
 }
 

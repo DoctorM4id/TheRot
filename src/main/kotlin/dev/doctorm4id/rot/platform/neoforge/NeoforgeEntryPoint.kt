@@ -9,8 +9,7 @@ import net.neoforged.fml.common.Mod
 class NeoforgeEntryPoint {
 
 	init {
-		// RegistryUtil breaks.
-		//TheRot().onInitialize()
+		TheRot().onInitialize()
 	}
 }
 
