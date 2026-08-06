@@ -1,7 +1,6 @@
 package dev.doctorm4id.rot
 
-import dev.doctorm4id.rot.core.ModBlocks
-import dev.doctorm4id.rot.core.ModItems
+import dev.doctorm4id.rot.core.ModRenderLayers
 import dev.doctorm4id.rot.platform.Platform
 import net.minecraft.resources.ResourceLocation
 import org.slf4j.Logger
@@ -33,9 +32,6 @@ class TheRot {
 	fun onInitialize() {
 		LOGGER.info( "Initializing {} on {}", MOD_ID, xplat().loader() )
 		LOGGER.debug( "{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME )
-
-		ModBlocks.init()
-		ModItems.init()
 	}
 
 	fun onInitializeClient() {

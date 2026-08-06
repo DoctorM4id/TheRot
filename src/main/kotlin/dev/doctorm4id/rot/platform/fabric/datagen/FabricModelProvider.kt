@@ -3,7 +3,7 @@ package dev.doctorm4id.rot.platform.fabric.datagen
 //? fabric {
 
 import dev.doctorm4id.rot.TheRot
-import dev.doctorm4id.rot.core.ModBlocks
+import dev.doctorm4id.rot.core.ModRegistry
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.models.BlockModelGenerators
@@ -13,12 +13,21 @@ class FabricModelProvider(output: FabricDataOutput) : FabricModelProvider(output
 
 	override fun generateBlockStateModels(blockStateModelGenerator: BlockModelGenerators?) {
 
-		blockStateModelGenerator?.createTrivialCube(ModBlocks.ROTTED_LEAVES)
-		blockStateModelGenerator?.family(ModBlocks.ROTTED_BLOCK)
-			?.fence(ModBlocks.ROTTED_FENCE)
-			?.slab(ModBlocks.ROTTED_SLAB)
-			?.stairs(ModBlocks.ROTTED_STAIRS)
-			?.wall(ModBlocks.ROTTED_WALL)
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.ROTTED_LEAVES())
+		blockStateModelGenerator?.family(ModRegistry.ROTTED_BLOCK())
+			?.fence(ModRegistry.ROTTED_FENCE())
+			?.slab(ModRegistry.ROTTED_SLAB())
+			?.stairs(ModRegistry.ROTTED_STAIR())
+			?.wall(ModRegistry.ROTTED_WALL())
+
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_CYAN())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_GREEN())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_RED())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_WHITE())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_PINK())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_YELLOW())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_BLUE())
+
 	}
 
 	override fun generateItemModels(itemModelGenerator: ItemModelGenerators?) {
