@@ -52,7 +52,7 @@ import kotlin.reflect.full.memberProperties
  * 		}
  * ```
  *
- * **Neoforge:**
+ * **Neoforge:** (I hate forge... I SWEAR I THINK IT WORKED, IDK WTH I DID.)
  * ```
  * 		ModRegistry.registerAll { id, obj ->
  * 			when (obj) {
