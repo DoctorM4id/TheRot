@@ -176,7 +176,9 @@ abstract class ContentRegistry(val modId: String) {
 
 /**
  * Pair of [RegistryObject]s for a block and item.
- * To get the block is something like this: ```MY_BLOCK.get()```
+ * To get the block is something like this:
+ *
+ * ```MY_BLOCK.get()``` or: ```MY_BLOCK()```
  *
  * @param block The block registry object
  * @param item The item registry object.
