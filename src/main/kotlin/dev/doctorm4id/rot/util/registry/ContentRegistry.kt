@@ -90,7 +90,7 @@ abstract class ContentRegistry(val modId: String) {
 	 * For Fabric, pass the instance directly.
 	 * For Neoforge, wrap it in a supplier.
 	 */
-	fun registerAll(registrar: (ResourceLocation, Any) -> Unit) {
+	fun registerAll(registrar: (ResourceLocation, () -> Any) -> Unit) {
 
 		if (entries.isEmpty()) {
 			this::class.memberProperties.forEach { property ->

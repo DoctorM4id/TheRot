@@ -1,5 +1,6 @@
 package dev.doctorm4id.rot.common.item
 
+import dev.doctorm4id.rot.systems.CursorManager
 import net.minecraft.core.BlockPos
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.InteractionResult
@@ -12,7 +13,7 @@ class CursorWand(properties : Properties) : Item(properties) {
 		if (level is ServerLevel) {
 			val spawnPos: BlockPos = ctx.clickedPos.relative(ctx.clickedFace)
 
-			//CursorManager.createSurfaceInfectorVirtualCursor(level, spawnPos)
+			CursorManager.createSurfaceInfectorVirtualCursor(level, spawnPos)
 
 			return InteractionResult.SUCCESS
 		}

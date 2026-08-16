@@ -19,10 +19,12 @@ class FabricEntrypoint : ModInitializer {
 		TheRot().onInitialize()
 		FabricEventSubscriber().registerEvents()
 
-		ModRegistry.registerAll { id, obj ->
+		ModRegistry.registerAll { id, supplier ->
+			val obj = supplier()
 			when (obj) {
 				is Block -> Registry.register(BuiltInRegistries.BLOCK, id, obj)
 				is Item -> Registry.register(BuiltInRegistries.ITEM, id, obj)
+				else -> {}
 			}
 		}
 	}

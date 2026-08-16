@@ -18,6 +18,10 @@ class FabricEventSubscriber {
 			}
 		})
 		//?}
+
+		ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server ->
+            TODO("waw")
+        })
 	}
 }
 

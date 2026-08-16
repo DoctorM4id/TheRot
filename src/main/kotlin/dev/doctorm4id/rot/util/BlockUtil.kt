@@ -154,11 +154,12 @@ object BlockUtil {
 	 */
 	fun isNotSolid(pos: BlockPos?, level: Level): Boolean {
 		val state = level.getBlockState(pos!!)
-		val canNotOcclude = !state.canOcclude()
-		val isNotSolid = !state.isSolid
+		//val canNotOcclude = !state.canOcclude()
+		//val isNotSolid = !state.isSolid
 		val isAir = state.isAir
-		val isNotSolidRender = !state.isSolidRender(level, pos)
-		return canNotOcclude || isNotSolid || isAir || isNotSolidRender
+		//val isNotSolidRender = !state.isSolidRender(level, pos)
+		//return canNotOcclude || isNotSolid || isAir || isNotSolidRender
+		return isAir
 	}
 
 	/**
