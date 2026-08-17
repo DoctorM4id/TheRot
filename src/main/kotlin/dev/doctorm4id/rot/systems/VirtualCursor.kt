@@ -5,10 +5,13 @@ import dev.doctorm4id.rot.util.BlockUtil
 import dev.doctorm4id.rot.util.TickUtil
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet
 import net.minecraft.core.BlockPos
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import java.util.ArrayDeque
 import java.util.UUID
+import kotlin.times
 
 open class VirtualCursor(private var level: Level) : ICursor {
 
@@ -44,18 +47,18 @@ open class VirtualCursor(private var level: Level) : ICursor {
 	val visitedPositions: MutableSet<Long> = HashSet()
 
 	protected open fun isTarget(pos: BlockPos): Boolean = !getWorld().getBlockState(pos).`is`(ModRegistry.NULL_CYAN())
-	protected open fun changeBlock(pos: BlockPos) = getWorld().setBlock(pos, ModRegistry.NULL_GREEN().defaultBlockState(), 3)
+	protected open fun changeBlock(pos: BlockPos) = getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3)
 
 	protected open fun isObstructed(state: BlockState, pos: BlockPos): Boolean {
-		if (BlockUtil.getBlockDistanceSquared(origin, pos) > 20 * 20) return true
-		if (BlockUtil.isAir(state)) return true
+		//if (BlockUtil.getBlockDistanceSquared(origin, pos) > 20 * 20) return true
+		//if (BlockUtil.isAir(state)) return true
 		if (visitedPositions.contains(pos.asLong())) return true
 
 		return false
 	}
 
 	private fun hasExpired(): Boolean {
-		return (getWorld().gameTime - creationTime) > TickUtil.convertMinutesToTicks(2)
+		return (getWorld().gameTime - creationTime) > TickUtil.convertMinutesToTicks(1)
 	}
 
 	override fun tick() {
@@ -67,12 +70,9 @@ open class VirtualCursor(private var level: Level) : ICursor {
 		if (origin == BlockPos.ZERO) origin = pos
 
 		when (state) {
-			State.SEARCHING -> {if (searchTick()) finishSearch(target)
-				println("searching")}
-			State.EXPLORING -> {exploreTick()
-				println("exploring")}
-			State.FINISHED -> {setExpired()
-				println("expired")}
+			State.SEARCHING -> {if (searchTick()) finishSearch(target)}
+			State.EXPLORING -> {exploreTick()}
+			State.FINISHED -> {setExpired()}
 		}
 	}
 
@@ -92,8 +92,13 @@ open class VirtualCursor(private var level: Level) : ICursor {
 
 			val currentBlock = searchQueue.poll() ?: return@repeat
 
-			if (currentBlock != pos && isTarget(currentBlock)) {
+			if (!level.getBlockState(currentBlock).`is`(ModRegistry.NULL_CYAN())) {
+				level.setBlock(currentBlock, Blocks.WHITE_STAINED_GLASS.defaultBlockState(), 3)
+			}
+
+			if (currentBlock != pos && isTarget(currentBlock) && shouldInfest(level, currentBlock)) {
 				target = currentBlock
+
 				return true
 			}
 
@@ -106,6 +111,10 @@ open class VirtualCursor(private var level: Level) : ICursor {
 
 				if (positionsSearched.add(longPos) && !isObstructed(getWorld().getBlockState(neighbor), neighbor)) {
 					searchQueue.add(neighbor)
+
+					if (!level.getBlockState(neighbor).`is`(ModRegistry.NULL_CYAN())) {
+						level.setBlock(neighbor, Blocks.GRAY_STAINED_GLASS.defaultBlockState(), 3)
+					}
 				}
 			}
 		}
@@ -133,8 +142,7 @@ open class VirtualCursor(private var level: Level) : ICursor {
 		var closet: BlockPos = BlockPos.ZERO
 		var minDistanceSq = Long.MAX_VALUE
 
-		println("exploring | stage ONE | $pos |")
-		getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3)
+		//getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3)
 
 		for (offset in NEIGHBOR_OFFSETS) {
 			val neighbor = pos.offset(offset)
@@ -150,21 +158,39 @@ open class VirtualCursor(private var level: Level) : ICursor {
 
 		moveTo(closet.x, closet.y, closet.z)
 
-		println("exploring | stage TWO | $pos")
-		getWorld().setBlock(pos, ModRegistry.NULL_BLUE().defaultBlockState(), 3)
+		//getWorld().setBlock(pos, ModRegistry.NULL_BLUE().defaultBlockState(), 3)
 
 		val targetCheck = isTarget(pos)
-		val obstructedCheck = !isObstructed(getWorld().getBlockState(pos), pos)
-		println("Debug -> isTarget: $targetCheck, isObstructed: $obstructedCheck")
+		val obstructedCheck = isObstructed(getWorld().getBlockState(pos), pos)
 
-		if (targetCheck && obstructedCheck) {
+/*		if (!level.getBlockState(pos).`is`(ModRegistry.NULL_CYAN())) {
+			getWorld().setBlock(pos, ModRegistry.NULL_WHITE().defaultBlockState(), 3)
+		}*/
+
+		if (targetCheck && !obstructedCheck) {
 			changeBlock(pos)
 			startSearch()
 		} else {
-			println("exploring | stage TWO | $pos | :c")
 			visitedPositions.add(closet.asLong())
 		}
 	}
+
+	fun shouldInfest(level: Level, pos: BlockPos): Boolean {
+
+		val neighbors = BlockUtil.getNeighborsCube(pos, false).filterNotNull()
+
+		val rotNeighbors = neighbors.count { level.getBlockState(it).`is`(ModRegistry.BlockTags.ROT_FAMILY) }
+		val exposed = if (BlockUtil.isExposedToAir(pos, level)) 1.0 else 0.1
+		//val darkness = 15 - level.getMaxLocalRawBrightness(pos)
+		val wetBonus = if (level.getFluidState(pos).isSource) 0.2 else 0.0
+		val distance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.2
+		val maxDistance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 15 * 15) 1.0 else 0.1
+
+		val base = 0.02
+		val chance = (base + rotNeighbors /*+ darkness * 0.01*/ + wetBonus) * exposed * distance * maxDistance
+		return level.random.nextDouble() < chance.coerceIn(0.0, 0.95)
+	}
+
 
 	override fun getID(): UUID = UUID(0L, id)
 

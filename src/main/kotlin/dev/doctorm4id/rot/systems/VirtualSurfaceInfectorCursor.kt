@@ -16,13 +16,13 @@ class VirtualSurfaceInfectorCursor(level: Level) : VirtualCursor(level) {
 
 	override fun isObstructed(state: BlockState, pos: BlockPos): Boolean {
 		val maxRangeSq = 16 * 16
-		if (BlockUtil.getBlockDistanceSquared(origin, pos) > maxRangeSq) {
+		if (BlockUtil.getBlockDistanceSquared(origin, pos) > maxRangeSq && false) {
 			return true
 		} else if (BlockUtil.isAir(state)) {
 			return true
 		} else if (visitedPositions.contains(pos.asLong())) {
 			return true
-		} else if (!BlockUtil.isExposedToAir(pos, getWorld())) {
+		} else if (!BlockUtil.isExposedToAir(pos, getWorld()) && false) {
 			return true
 		} else if ((state.`is`(Blocks.WATER) || state.`is`(Blocks.BUBBLE_COLUMN))) {
 			return true

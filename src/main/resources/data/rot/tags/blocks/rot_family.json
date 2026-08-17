@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "rot:rotted_block",
+    "rot:rotted_stairs",
+    "rot:rotted_slab",
+    "rot:rotted_grass",
+    "rot:rotted_grass_short",
+    "rot:rotted_leaves",
+    "rot:rotted_wall",
+    "rot:rotted_fence",
+    "rot:blooming_cyst",
+    "rot:null_cyan"
+  ]
+}

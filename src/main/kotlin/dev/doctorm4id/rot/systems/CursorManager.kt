@@ -24,11 +24,12 @@ object CursorManager {
 	fun tick() {
 		if (list.isEmpty()) return
 
-		val maxCursors = 32
+		val maxCursors = 64
 
 		if (cleanCooldown-- <= 0) {
 			virtualCursor.clean()
 			cleanCooldown = 20
+			println("Cursors -> "+list.size)
 		}
 
 		val toProcess = list.filter { !it.isExpired() }.take(maxCursors)

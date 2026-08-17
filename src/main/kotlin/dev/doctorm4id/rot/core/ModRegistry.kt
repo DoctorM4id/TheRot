@@ -6,6 +6,8 @@ import dev.doctorm4id.rot.common.block.RottedFloraBlock
 import dev.doctorm4id.rot.common.item.CursorWand
 import dev.doctorm4id.rot.util.CommonUtil
 import dev.doctorm4id.rot.util.registry.ContentRegistry
+import net.minecraft.core.registries.Registries
+import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.level.block.Block
@@ -122,4 +124,16 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 			.stacksTo(1)
 			.fireResistant()
 		)}
+
+	object BlockTags {
+		val ROT_FAMILY: TagKey<Block> = create("rot_family")
+
+		private fun create(name: String): TagKey<Block> {
+			return TagKey.create(Registries.BLOCK, TheRot().id(name))
+		}
+
+		private fun createMinecraft(name: String): TagKey<Block> {
+			return TagKey.create(Registries.BLOCK, TheRot().id(name))
+		}
+	}
 }
