@@ -31,5 +31,3 @@
 - Next versioning format will now be `0.1.0-alpha.4`.
 
 - If your looking for alpha v1.0... it's not here. ;) Will most likely try to find it again and upload as different branch.
-
-- Will perhaps make new branches for releases, for example: `0.1.0-alpha.4`, `0.1.0-alpha.5`. Still figuring out how I want to do version formats and stuff.
