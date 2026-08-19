@@ -33,6 +33,7 @@ class FabricModelProvider(output: FabricDataOutput) : FabricModelProvider(output
 
 	override fun generateItemModels(itemModelGenerator: ItemModelGenerators?) {
 		itemModelGenerator?.generateFlatItem(ModRegistry.CURSOR_WAND(), ModelTemplates.FLAT_ITEM)
+		itemModelGenerator?.generateFlatItem(ModRegistry.INFESST_WAND(), ModelTemplates.FLAT_ITEM)
 	}
 
 	override fun getName(): String {

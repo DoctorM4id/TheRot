@@ -24,7 +24,7 @@ object CursorManager {
 	fun tick() {
 		if (list.isEmpty()) return
 
-		val maxCursors = 64
+		val maxCursors = 128
 
 		if (cleanCooldown-- <= 0) {
 			virtualCursor.clean()

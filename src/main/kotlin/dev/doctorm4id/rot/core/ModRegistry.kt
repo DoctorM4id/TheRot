@@ -4,6 +4,7 @@ import dev.doctorm4id.rot.TheRot
 import dev.doctorm4id.rot.common.block.BloomingCystBlock
 import dev.doctorm4id.rot.common.block.RottedFloraBlock
 import dev.doctorm4id.rot.common.item.CursorWand
+import dev.doctorm4id.rot.common.item.InfestWand
 import dev.doctorm4id.rot.util.CommonUtil
 import dev.doctorm4id.rot.util.registry.ContentRegistry
 import net.minecraft.core.registries.Registries
@@ -80,46 +81,60 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_CYAN)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_GREEN by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_GREEN)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_RED by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_RED)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_WHITE by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.TERRACOTTA_WHITE)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_PINK by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_PINK)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_BLUE by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_BLUE)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val NULL_YELLOW by blockWithItem {
 		Block(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_YELLOW)
 			.noOcclusion()
+			.lightLevel { 15 }
 		)}
 
 	val CURSOR_WAND by item {
 		CursorWand(Item.Properties()
+			.rarity(Rarity.EPIC)
+			.stacksTo(1)
+			.fireResistant()
+		)}
+
+	val INFESST_WAND by item {
+		InfestWand(Item.Properties()
 			.rarity(Rarity.EPIC)
 			.stacksTo(1)
 			.fireResistant()

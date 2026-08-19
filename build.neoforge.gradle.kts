@@ -99,12 +99,28 @@ repositories {
 		name = "Kotlin for Forge"
 		setUrl("https://thedarkcolour.github.io/KotlinForForge/")
 	}
+
+	exclusiveContent {
+		forRepository {
+			maven { url = uri("https://maven.ryanhcode.dev/releases") }
+		}
+		filter {
+			includeGroup("dev.ryanhcode.sable-companion")
+		}
+	}
 }
 
 dependencies {
 	// implementation(libs.moulberry.mixinconstraints)
 	// jarJar(libs.moulberry.mixinconstraints)
 	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("deps.neoforge-language-kotlin")}")
+
+	implementation("dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:1.6.0")
+	jarJar("dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:[1.6.0,)") {
+		version {
+			prefer("1.6.0")
+		}
+	}
 }
 
 tasks.named("createMinecraftArtifacts") {
