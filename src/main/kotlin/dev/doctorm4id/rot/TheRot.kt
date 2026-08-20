@@ -1,6 +1,5 @@
 package dev.doctorm4id.rot
 
-import dev.doctorm4id.rot.core.ModRenderLayers
 import dev.doctorm4id.rot.platform.Platform
 import net.minecraft.resources.ResourceLocation
 import org.slf4j.Logger

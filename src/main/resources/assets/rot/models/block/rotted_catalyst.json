@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "rot:block/rot_catalyst_bottom",
+    "side": "rot:block/rot_catalyst_side",
+    "top": "rot:block/rot_catalyst_top"
+  }
+}
