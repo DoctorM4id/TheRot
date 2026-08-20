@@ -1,10 +1,14 @@
 package dev.doctorm4id.rot.stoatutil.registry
 
 import dev.doctorm4id.rot.stoatutil.StoatCommonUtil
+import net.minecraft.core.BlockPos
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.BlockEntityType
+import net.minecraft.world.level.block.state.BlockState
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import kotlin.reflect.full.memberProperties
@@ -125,6 +129,20 @@ abstract class ContentRegistry(val modId: String) {
 	 */
 	protected fun block(supplier: () -> Block): ReadOnlyProperty<ContentRegistry, StoatRegistryObject<Block>> =
 		registryDelegate(supplier)
+
+	/**
+	 * Registers a [BlockEntity].
+	 * ```
+	 * 	val ROTTED_CATALYST_ENTITY by blockEntity(
+	 * 		::RottedCatalystBlockEntity,
+	 * 		ROTTED_CATALYST()
+	 * 	)
+	 * ```
+	 */
+	protected fun <T : BlockEntity> blockEntity(factory: (BlockPos, BlockState) -> T, vararg blocks: Block): ReadOnlyProperty<ContentRegistry, StoatRegistryObject<BlockEntityType<T>>> =
+		registryDelegate {
+			BlockEntityType.Builder.of(factory, *blocks).build(null)
+		}
 
 	/**
 	 * Registers a [Block], and a [BlockItem]
