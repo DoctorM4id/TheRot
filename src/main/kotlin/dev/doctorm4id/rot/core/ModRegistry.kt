@@ -5,8 +5,8 @@ import dev.doctorm4id.rot.common.block.BloomingCystBlock
 import dev.doctorm4id.rot.common.block.RottedFloraBlock
 import dev.doctorm4id.rot.common.item.CursorWand
 import dev.doctorm4id.rot.common.item.InfestWand
-import dev.doctorm4id.rot.util.CommonUtil
-import dev.doctorm4id.rot.util.registry.ContentRegistry
+import dev.doctorm4id.rot.stoatutil.StoatCommonUtil
+import dev.doctorm4id.rot.stoatutil.registry.ContentRegistry
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
@@ -39,22 +39,22 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 	val ROTTED_STAIR by blockWithItem {
 		StairBlock(
 			ROTTED_BLOCK().defaultBlockState(),
-			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
+			StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK())
 		)}
 
 	val ROTTED_SLAB by blockWithItem {
 		SlabBlock(
-			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
+			StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK())
 		)}
 
 	val ROTTED_WALL by blockWithItem {
 		WallBlock(
-			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
+			StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK())
 		)}
 
 	val ROTTED_FENCE by blockWithItem {
 		FenceBlock(
-			CommonUtil.copyBlockProperties(ROTTED_BLOCK())
+			StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK())
 		)}
 
 	val ROTTED_LEAVES by blockWithItem {
@@ -74,7 +74,7 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 
 	val ROTTED_GRASS_SHORT by blockWithItem {
 		RottedFloraBlock(
-			CommonUtil.copyBlockProperties(ROTTED_GRASS())
+			StoatCommonUtil.copyBlockProperties(ROTTED_GRASS())
 		)}
 
 	val NULL_CYAN by blockWithItem {

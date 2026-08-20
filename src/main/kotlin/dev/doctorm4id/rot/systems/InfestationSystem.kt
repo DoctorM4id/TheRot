@@ -1,8 +1,8 @@
 package dev.doctorm4id.rot.systems
 
 import dev.doctorm4id.rot.core.ModRegistry
-import dev.doctorm4id.rot.util.BlockUtil
-import dev.doctorm4id.rot.util.PoolBlocks
+import dev.doctorm4id.rot.stoatutil.StoatBlockUtil
+import dev.doctorm4id.rot.stoatutil.PoolBlocks
 import net.minecraft.core.BlockPos
 import net.minecraft.core.particles.SculkChargeParticleOptions
 import net.minecraft.server.level.ServerLevel
@@ -48,7 +48,7 @@ object InfestationSystem {
 			is SlabBlock -> ModRegistry.ROTTED_SLAB().defaultBlockState()
 				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)
 			else -> {
-				if (BlockUtil.isSolid(pos, level)) cyst.defaultBlockState() else return
+				if (StoatBlockUtil.isSolid(pos, level)) cyst.defaultBlockState() else return
 			}
 		}
 

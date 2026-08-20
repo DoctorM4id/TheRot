@@ -1,8 +1,8 @@
 package dev.doctorm4id.rot.systems
 
 import dev.doctorm4id.rot.core.ModRegistry
-import dev.doctorm4id.rot.util.BlockUtil
-import dev.doctorm4id.rot.util.TickUtil
+import dev.doctorm4id.rot.stoatutil.StoatBlockUtil
+import dev.doctorm4id.rot.stoatutil.StoatTickUtil
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.Level
@@ -56,7 +56,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 	}
 
 	private fun hasExpired(): Boolean {
-		return (getWorld().gameTime - creationTime) > TickUtil.convertMinutesToTicks(2)
+		return (getWorld().gameTime - creationTime) > StoatTickUtil.convertMinutesToTicks(2)
 	}
 
 	override fun tick() {
@@ -148,7 +148,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 		for (offset in NEIGHBOR_OFFSETS) {
 			val neighbor = pos.offset(offset)
 			if (!isObstructed(getWorld().getBlockState(neighbor), neighbor)) {
-				val distSq = BlockUtil.getBlockDistanceSquared(neighbor, currentTarget)
+				val distSq = StoatBlockUtil.getBlockDistanceSquared(neighbor, currentTarget)
 
 				if (distSq < minDistanceSq) {
 					minDistanceSq = distSq.toLong()

@@ -1,10 +1,10 @@
-package dev.doctorm4id.rot.util
+package dev.doctorm4id.rot.stoatutil
 
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockBehaviour
 
-object CommonUtil {
+object StoatCommonUtil {
 
 	fun id(namespace: String?, path: String?): ResourceLocation {
 		//? > 1.20.1 {

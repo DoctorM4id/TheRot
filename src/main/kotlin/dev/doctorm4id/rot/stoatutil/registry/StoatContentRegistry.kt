@@ -1,17 +1,13 @@
-package dev.doctorm4id.rot.util.registry
+package dev.doctorm4id.rot.stoatutil.registry
 
-import dev.doctorm4id.rot.util.CommonUtil
+import dev.doctorm4id.rot.stoatutil.StoatCommonUtil
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.entity.BlockEntity
-import java.lang.reflect.Modifier
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import kotlin.reflect.full.memberProperties
-
-// Blehg, started to write javadocs for everythin... because idk I am bored and looks cool.
 
 /**
  * Base class for a mod's registry container.
@@ -55,7 +51,7 @@ import kotlin.reflect.full.memberProperties
  * 	}
  * ```
  *
- * **Neoforge:** (I hate forge... I SWEAR I THINK IT WORKED, IDK WTH I DID.)
+ * **Neoforge:**
  * ```
  * 	@JvmStatic
  * 	@SubscribeEvent
@@ -82,20 +78,19 @@ import kotlin.reflect.full.memberProperties
  */
 abstract class ContentRegistry(val modId: String) {
 
-	private val entries = mutableListOf<RegistryObject<*>>()
-	private var forced = false
+	private val entries = mutableListOf<StoatRegistryObject<*>>()
 
 	/**
-	 * Creates a [RegistryObject] then adds it to the [entries].
+	 * Creates a [StoatRegistryObject] then adds it to the [entries].
 	 *
 	 * @param name The registry name
 	 * @param supplier A lambda that creates instance.
-	 * @return The new [RegistryObject]
+	 * @return The new [StoatRegistryObject]
 	 */
-	protected fun <T : Any> createRegistryObject(name: String, supplier: () -> T): RegistryObject<T> {
+	protected fun <T : Any> createRegistryObject(name: String, supplier: () -> T): StoatRegistryObject<T> {
 
-		val id = CommonUtil.id(modId, name)
-		return RegistryObject(id, supplier).also { entries.add(it) }
+		val id = StoatCommonUtil.id(modId, name)
+		return StoatRegistryObject(id, supplier).also { entries.add(it) }
 	}
 
 	/**
@@ -128,7 +123,7 @@ abstract class ContentRegistry(val modId: String) {
 	 * 	}
 	 * ```
 	 */
-	protected fun block(supplier: () -> Block): ReadOnlyProperty<ContentRegistry, RegistryObject<Block>> =
+	protected fun block(supplier: () -> Block): ReadOnlyProperty<ContentRegistry, StoatRegistryObject<Block>> =
 		registryDelegate(supplier)
 
 	/**
@@ -167,7 +162,7 @@ abstract class ContentRegistry(val modId: String) {
 	 * 	}
 	 * ```
 	 */
-	protected fun item(supplier: () -> Item): ReadOnlyProperty<ContentRegistry, RegistryObject<Item>> =
+	protected fun item(supplier: () -> Item): ReadOnlyProperty<ContentRegistry, StoatRegistryObject<Item>> =
 		registryDelegate(supplier)
 
 
@@ -176,11 +171,11 @@ abstract class ContentRegistry(val modId: String) {
 	/**
 	 * Helper
 	 */
-	private inline fun <reified T : Any> registryDelegate(noinline supplier: () -> T): ReadOnlyProperty<ContentRegistry, RegistryObject<T>> = object : ReadOnlyProperty<ContentRegistry, RegistryObject<T>> {
+	private inline fun <reified T : Any> registryDelegate(noinline supplier: () -> T): ReadOnlyProperty<ContentRegistry, StoatRegistryObject<T>> = object : ReadOnlyProperty<ContentRegistry, StoatRegistryObject<T>> {
 
-		private var delegate: RegistryObject<T>? = null
+		private var delegate: StoatRegistryObject<T>? = null
 
-		override fun getValue(thisRef: ContentRegistry, property: KProperty<*>): RegistryObject<T> {
+		override fun getValue(thisRef: ContentRegistry, property: KProperty<*>): StoatRegistryObject<T> {
 			val existing = delegate
 			if (existing != null) return existing
 
@@ -193,7 +188,7 @@ abstract class ContentRegistry(val modId: String) {
 }
 
 /**
- * Pair of [RegistryObject]s for a block and item.
+ * Pair of [StoatRegistryObject]s for a block and item.
  * To get the block is something like this:
  *
  * ```MY_BLOCK.get()``` or: ```MY_BLOCK()```
@@ -201,7 +196,7 @@ abstract class ContentRegistry(val modId: String) {
  * @param block The block registry object
  * @param item The item registry object.
  */
-data class BlockWithItem(val block: RegistryObject<Block>, val item: RegistryObject<BlockItem>) {
+data class BlockWithItem(val block: StoatRegistryObject<Block>, val item: StoatRegistryObject<BlockItem>) {
 
 	fun get(): Block {
 		return block.get()

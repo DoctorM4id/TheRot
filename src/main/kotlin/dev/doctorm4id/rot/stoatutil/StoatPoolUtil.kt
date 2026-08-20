@@ -1,5 +1,5 @@
 @file:Suppress("unused")
-package dev.doctorm4id.rot.util
+package dev.doctorm4id.rot.stoatutil
 
 import net.minecraft.world.level.block.Block
 import kotlin.random.Random

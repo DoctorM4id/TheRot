@@ -1,10 +1,10 @@
 @file:Suppress("unused")
-package dev.doctorm4id.rot.util
+package dev.doctorm4id.rot.stoatutil
 
 import net.minecraft.world.level.Level
 import kotlin.math.abs
 
-object TickUtil {
+object StoatTickUtil {
 
 	val TICKS_PER_SECOND: Int = 20
 	val TICKS_PER_MINUTE: Int = TICKS_PER_SECOND * 60

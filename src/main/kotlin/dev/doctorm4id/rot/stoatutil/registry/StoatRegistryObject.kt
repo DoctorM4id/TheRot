@@ -1,8 +1,8 @@
-package dev.doctorm4id.rot.util.registry
+package dev.doctorm4id.rot.stoatutil.registry
 
 import net.minecraft.resources.ResourceLocation
 
-class RegistryObject<T : Any>(val id: ResourceLocation, private val supplier: () -> T) {
+class StoatRegistryObject<T : Any>(val id: ResourceLocation, private val supplier: () -> T) {
 	private var value: T? = null
 
 	internal fun register(registrar: (ResourceLocation, () -> T) -> Unit) {

@@ -1,7 +1,7 @@
 package dev.doctorm4id.rot.systems
 
 import dev.doctorm4id.rot.core.ModRegistry
-import dev.doctorm4id.rot.util.BlockUtil
+import dev.doctorm4id.rot.stoatutil.StoatBlockUtil
 import net.minecraft.core.BlockPos
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.level.Level
@@ -20,13 +20,13 @@ class VirtualSurfaceInfectorCursor(level: ServerLevel) : VirtualCursor(level) {
 	}
 
 	override fun isObstructed(state: BlockState, pos: BlockPos): Boolean {
-		if (BlockUtil.isAir(state)) {
+		if (StoatBlockUtil.isAir(state)) {
 			return true
 		} else if (visitedPositions.contains(pos.asLong())) {
 			return true
 		} else if ((state.`is`(Blocks.WATER) || state.`is`(Blocks.BUBBLE_COLUMN))) {
 			return true
-		} else if (BlockUtil.isNotSolid(pos, getWorld())) {
+		} else if (StoatBlockUtil.isNotSolid(pos, getWorld())) {
 			return true
 		}
 
@@ -34,14 +34,14 @@ class VirtualSurfaceInfectorCursor(level: ServerLevel) : VirtualCursor(level) {
 	}
 
 	fun shouldInfest(level: Level, pos: BlockPos): Boolean {
-		val neighbors = BlockUtil.getNeighborsCube(pos, false).filterNotNull()
+		val neighbors = StoatBlockUtil.getNeighborsCube(pos, false).filterNotNull()
 
 		val rotNeighbors = neighbors.count { level.getBlockState(it).`is`(ModRegistry.BlockTags.ROT_FAMILY) }
-		val exposed = if (BlockUtil.isExposedToAir(pos, level)) 1.0 else 0.05
+		val exposed = if (StoatBlockUtil.isExposedToAir(pos, level)) 1.0 else 0.05
 		//val darkness = 15 - level.getMaxLocalRawBrightness(pos)
 		val wetBonus = if (level.getFluidState(pos).isSource) 0.2 else 0.0
-		val distance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.2
-		val maxDistance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 15 * 15) 1.0 else 0.1
+		val distance = if (StoatBlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.2
+		val maxDistance = if (StoatBlockUtil.getBlockDistanceSquared(origin, pos) < 15 * 15) 1.0 else 0.1
 
 		val base = 0.02
 		val chance = (((base + rotNeighbors * 0.1 /*+ darkness * 0.01*/ + wetBonus) * exposed) * distance) * maxDistance

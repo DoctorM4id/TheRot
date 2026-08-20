@@ -1,5 +1,5 @@
 @file:Suppress("unused")
-package dev.doctorm4id.rot.util
+package dev.doctorm4id.rot.stoatutil
 
 import net.minecraft.core.BlockPos
 import net.minecraft.server.level.ServerLevel
@@ -10,7 +10,7 @@ import net.minecraft.world.level.material.Fluids
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-object BlockUtil {
+object StoatBlockUtil {
 
 	/**
 	 * Checks if the block state is generally replaceable
