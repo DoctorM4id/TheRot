@@ -45,22 +45,38 @@ import kotlin.reflect.full.memberProperties
  *
  * **Fabric:**
  * ```
- * 		ModRegistry.registerAll { id, obj ->
- * 			when (obj) {
- * 				is Block -> Registry.register(BuiltInRegistries.BLOCK, id, obj)
- * 				is Item -> Registry.register(BuiltInRegistries.ITEM, id, obj)
- * 			}
+ * 	ModRegistry.registerAll { id, supplier ->
+ * 		val obj = supplier()
+ * 		when (obj) {
+ * 			is Block -> Registry.register(BuiltInRegistries.BLOCK, id, obj)
+ * 			is Item -> Registry.register(BuiltInRegistries.ITEM, id, obj)
+ * 			else -> {}
  * 		}
+ * 	}
  * ```
  *
  * **Neoforge:** (I hate forge... I SWEAR I THINK IT WORKED, IDK WTH I DID.)
  * ```
- * 		ModRegistry.registerAll { id, obj ->
- * 			when (obj) {
- * 				is Block -> event.register(BuiltInRegistries.BLOCK.key(), id) { obj }
- * 				is Item -> event.register(BuiltInRegistries.ITEM.key(), id) { obj }
+ * 	@JvmStatic
+ * 	@SubscribeEvent
+ * 	fun onRegister(event: RegisterEvent) {
+ * 		ModRegistry.registerAll { id, supplier ->
+ * 			when (event.registryKey) {
+ * 				BuiltInRegistries.BLOCK.key() -> {
+ * 					val obj = supplier()
+ * 					if (obj is Block) {
+ * 						event.register(BuiltInRegistries.BLOCK.key(), id) { obj }
+ * 					}
+ * 				}
+ * 				BuiltInRegistries.ITEM.key() -> {
+ * 					val obj = supplier()
+ * 					if (obj is Item) {
+ * 						event.register(BuiltInRegistries.ITEM.key(), id) { obj }
+ * 					}
+ * 				}
  * 			}
  * 		}
+ * 	}
  * ```
  *
  */

@@ -31,8 +31,6 @@ object NeoforgeEventSubscriber {
 		}
 	}
 
-	val BLOCKS: DeferredRegister.Blocks = DeferredRegister.createBlocks(TheRot.MOD_ID)
-
 	@JvmStatic
 	@SubscribeEvent
 	fun onRegister(event: RegisterEvent) {

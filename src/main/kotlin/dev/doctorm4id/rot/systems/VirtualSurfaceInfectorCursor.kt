@@ -1,6 +1,5 @@
 package dev.doctorm4id.rot.systems
 
-import dev.doctorm4id.rot.TheRot
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.doctorm4id.rot.util.BlockUtil
 import net.minecraft.core.BlockPos
