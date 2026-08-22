@@ -14,7 +14,7 @@ class FabricModelProvider(output: FabricDataOutput) : FabricModelProvider(output
 
 	override fun generateBlockStateModels(blockStateModelGenerator: BlockModelGenerators?) {
 
-		blockStateModelGenerator?.createTrivialCube(ModRegistry.ROTTED_LEAVES())
+/*		blockStateModelGenerator?.createTrivialCube(ModRegistry.ROTTED_LEAVES())
 		blockStateModelGenerator?.family(ModRegistry.ROTTED_BLOCK())
 			?.fence(ModRegistry.ROTTED_FENCE())
 			?.slab(ModRegistry.ROTTED_SLAB())
@@ -27,13 +27,13 @@ class FabricModelProvider(output: FabricDataOutput) : FabricModelProvider(output
 		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_WHITE())
 		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_PINK())
 		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_YELLOW())
-		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_BLUE())
+		blockStateModelGenerator?.createTrivialCube(ModRegistry.NULL_BLUE())*/
 
 	}
 
 	override fun generateItemModels(itemModelGenerator: ItemModelGenerators?) {
-		itemModelGenerator?.generateFlatItem(ModRegistry.CURSOR_WAND(), ModelTemplates.FLAT_ITEM)
-		itemModelGenerator?.generateFlatItem(ModRegistry.INFESST_WAND(), ModelTemplates.FLAT_ITEM)
+/*		itemModelGenerator?.generateFlatItem(ModRegistry.CURSOR_WAND(), ModelTemplates.FLAT_ITEM)
+		itemModelGenerator?.generateFlatItem(ModRegistry.INFESST_WAND(), ModelTemplates.FLAT_ITEM)*/
 	}
 
 	override fun getName(): String {

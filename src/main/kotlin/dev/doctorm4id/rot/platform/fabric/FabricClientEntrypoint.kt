@@ -9,7 +9,6 @@ import dev.doctorm4id.rot.core.ModRenderLayers
 *///? }
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint
 import net.fabricmc.api.ClientModInitializer
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.client.renderer.RenderType
 
 @Entrypoint("client")
@@ -17,10 +16,6 @@ class FabricClientEntrypoint : ClientModInitializer {
 
 	override fun onInitializeClient() {
 		TheRot().onInitializeClient()
-
-		ModRenderLayers.CUTOUT_BLOCKS.forEach { block ->
-			BlockRenderLayerMap.INSTANCE.putBlock(block, RenderType.cutout())
-		}
 	}
 }
 

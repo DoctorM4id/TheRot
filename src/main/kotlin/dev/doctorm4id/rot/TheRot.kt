@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory
 
 //? fabric {
 /*import dev.doctorm4id.rot.platform.fabric.FabricPlatform
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.level.block.Block
+*///? }
 
-*///?} neoforge {
+//? neoforge {
 import dev.doctorm4id.rot.platform.neoforge.NeoforgePlatform
 //? }
 

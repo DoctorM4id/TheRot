@@ -102,6 +102,8 @@ dependencies {
 	modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
 	//  implementation(libs.moulberry.mixinconstraints)
 	// include(libs.moulberry.mixinconstraints)
-	//modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
 	// modLocalRuntime("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
+
+	modImplementation(files("libs/stoatlib-0.1.0-alpha.2-fabric+1.21.1-SNAPSHOT.jar"))
 }

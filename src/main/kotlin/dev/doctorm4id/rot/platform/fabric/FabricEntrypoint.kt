@@ -3,8 +3,10 @@ package dev.doctorm4id.rot.platform.fabric
 //? fabric {
 
 /*import dev.doctorm4id.rot.TheRot
+import dev.doctorm4id.rot.core.ModContent
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint
+import io.ejekta.kambrik.registration.KambrikRegistrar
 import net.fabricmc.api.ModInitializer
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
@@ -19,14 +21,7 @@ class FabricEntrypoint : ModInitializer {
 		TheRot().onInitialize()
 		FabricEventSubscriber().registerEvents()
 
-		ModRegistry.registerAll { id, supplier ->
-			val obj = supplier()
-			when (obj) {
-				is Block -> Registry.register(BuiltInRegistries.BLOCK, id, obj)
-				is Item -> Registry.register(BuiltInRegistries.ITEM, id, obj)
-				else -> {}
-			}
-		}
+		KambrikRegistrar.doRegistrationsFor(ModContent)
 	}
 }
 
