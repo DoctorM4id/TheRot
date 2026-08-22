@@ -46,7 +46,7 @@ class VirtualSurfaceInfectorCursor(level: ServerLevel) : VirtualCursor(level) {
 		val distance = if (StoatBlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.5
 
 		val base = 0.15
-		val chance = (((base + (rotNeighbors * 0.2).coerceIn(0.0, 1.0)) * exposed) * distance)
+		val chance = (((base + (rotNeighbors * 0.3).coerceIn(0.0, 1.0)) * exposed) * distance)
 
 		val willInfest = level.random.nextDouble() < chance.coerceIn(0.0, 0.95)
 
