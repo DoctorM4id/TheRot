@@ -7,7 +7,7 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.context.UseOnContext
 
-class CursorWand(properties : Properties) : Item(properties) {
+class CursorWand(props: Properties) : Item( props.stacksTo(1).fireResistant() ) {
 
 	override fun useOn(ctx: UseOnContext): InteractionResult {
 		val level = ctx.level

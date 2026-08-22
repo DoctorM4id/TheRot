@@ -2,13 +2,10 @@ package dev.doctorm4id.rot.core
 
 import dev.doctorm4id.rot.TheRot
 import dev.doctorm4id.rot.common.block.BloomingCystBlock
-import dev.doctorm4id.rot.common.block.RottedCatalystBlock
-import dev.doctorm4id.rot.common.block.RottedCatalystBlockEntity
 import dev.doctorm4id.rot.common.block.RottedFloraBlock
 import dev.doctorm4id.rot.common.item.CursorWand
 import dev.doctorm4id.rot.common.item.InfestWand
 import dev.doctorm4id.rot.stoatutil.StoatCommonUtil
-import dev.doctorm4id.rot.stoatutil.registry.ContentRegistry
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
@@ -20,25 +17,12 @@ import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.WallBlock
-import net.minecraft.world.level.block.entity.BlockEntity
-import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.MapColor
 
-object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
+object ModRegistry {
 
-	val ROTTED_CATALYST by blockWithItem {
-		RottedCatalystBlock(BlockBehaviour.Properties.of()
-			.sound(SoundType.HONEY_BLOCK)
-			.mapColor(MapColor.COLOR_BLACK)
-			.lightLevel { 4 }
-		)}
-
-	val ROTTED_CATALYST_ENTITY by blockEntity(
-		::RottedCatalystBlockEntity,
-		ROTTED_CATALYST()
-	)
-
+/*
 	val BLOOMING_CYST by blockWithItem {
 		BloomingCystBlock(BlockBehaviour.Properties.of()
 			.sound(SoundType.HONEY_BLOCK)
@@ -142,12 +126,14 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 			.lightLevel { 15 }
 		)}
 
-	val CURSOR_WAND by item {
+*/
+/*	val CURSOR_WAND by item {
 		CursorWand(Item.Properties()
 			.rarity(Rarity.EPIC)
 			.stacksTo(1)
 			.fireResistant()
-		)}
+		)}*//*
+
 
 	val INFESST_WAND by item {
 		InfestWand(Item.Properties()
@@ -155,16 +141,7 @@ object ModRegistry : ContentRegistry(TheRot.MOD_ID) {
 			.stacksTo(1)
 			.fireResistant()
 		)}
+*/
 
-	object BlockTags {
-		val ROT_FAMILY: TagKey<Block> = create("rot_family")
 
-		private fun create(name: String): TagKey<Block> {
-			return TagKey.create(Registries.BLOCK, TheRot().id(name))
-		}
-
-		private fun createMinecraft(name: String): TagKey<Block> {
-			return TagKey.create(Registries.BLOCK, TheRot().id(name))
-		}
-	}
 }

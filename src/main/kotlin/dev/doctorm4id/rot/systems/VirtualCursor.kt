@@ -1,11 +1,13 @@
 package dev.doctorm4id.rot.systems
 
+import dev.doctorm4id.rot.core.ModContent
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.doctorm4id.rot.stoatutil.StoatBlockUtil
 import dev.doctorm4id.rot.stoatutil.StoatTickUtil
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import java.util.ArrayDeque
@@ -25,8 +27,6 @@ open class VirtualCursor(var level: Level) : ICursor {
 				}
 			}
 		}.toTypedArray()
-
-		private var ID = 0L
 	}
 
 	enum class State { SEARCHING, EXPLORING, FINISHED }
@@ -36,7 +36,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 	private var target: BlockPos? = BlockPos.ZERO
 
 	private var state = State.SEARCHING
-	private val id: Long = ++ID
+	private val id: Long = UUID.randomUUID().leastSignificantBits
 	private var expired: Boolean = false
 
 	private val creationTime: Long = getWorld().gameTime
@@ -44,12 +44,12 @@ open class VirtualCursor(var level: Level) : ICursor {
 	private val positionsSearched: LongOpenHashSet = LongOpenHashSet()
 	val visitedPositions: MutableSet<Long> = HashSet()
 
-	protected open fun isTarget(level: Level, pos: BlockPos): Boolean = !getWorld().getBlockState(pos).`is`(ModRegistry.NULL_CYAN())
-	protected open fun changeBlock(pos: BlockPos) { getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3) }
+	protected open fun isTarget(level: Level, pos: BlockPos): Boolean = !getWorld().getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)
+	protected open fun changeBlock(pos: BlockPos) { getWorld().setBlock(pos, ModContent.NULL_CYAN.defaultBlockState(), 3) }
 
 	protected open fun isObstructed(state: BlockState, pos: BlockPos): Boolean {
 		//if (BlockUtil.getBlockDistanceSquared(origin, pos) > 20 * 20) return true
-		//if (BlockUtil.isAir(state)) return true
+		//if (StoatBlockUtil.isAir(state)) return true
 		if (visitedPositions.contains(pos.asLong())) return true
 
 		return false
@@ -91,7 +91,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 			val currentBlock = searchQueue.poll() ?: return@repeat
 
 
-			if (!level.getBlockState(currentBlock).`is`(ModRegistry.BlockTags.ROT_FAMILY)) {
+			if (!level.getBlockState(currentBlock).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 				level.setBlock(currentBlock, Blocks.WHITE_STAINED_GLASS.defaultBlockState(), 3)
 			}
 
@@ -99,6 +99,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 			//if (currentBlock != pos && isTarget(level, currentBlock) && shouldInfest(level, currentBlock)) {
 			if (currentBlock != pos && isTarget(level, currentBlock)) {
 				target = currentBlock
+				//println(currentBlock)
 
 				return true
 			}
@@ -113,7 +114,7 @@ open class VirtualCursor(var level: Level) : ICursor {
 				if (positionsSearched.add(longPos) && !isObstructed(getWorld().getBlockState(neighbor), neighbor)) {
 					searchQueue.add(neighbor)
 
-					if (!level.getBlockState(neighbor).`is`(ModRegistry.BlockTags.ROT_FAMILY)) {
+					if (!level.getBlockState(neighbor).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 						level.setBlock(neighbor, Blocks.LIGHT_GRAY_STAINED_GLASS.defaultBlockState(), 3)
 					}
 				}
@@ -135,13 +136,13 @@ open class VirtualCursor(var level: Level) : ICursor {
 	private fun exploreTick() {
 		val currentTarget = target
 
-		if (currentTarget == null) {
+		var closet: BlockPos = BlockPos.ZERO
+		var minDistanceSq = Long.MAX_VALUE
+
+		if (currentTarget == BlockPos.ZERO || currentTarget == null) {
 			startSearch()
 			return
 		}
-
-		var closet: BlockPos = BlockPos.ZERO
-		var minDistanceSq = Long.MAX_VALUE
 
 		//getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3)
 
@@ -164,15 +165,19 @@ open class VirtualCursor(var level: Level) : ICursor {
 		val targetCheck = isTarget(level, pos)
 		val obstructedCheck = isObstructed(getWorld().getBlockState(pos), pos)
 
-/*		if (!level.getBlockState(pos).`is`(ModRegistry.NULL_CYAN())) {
-			getWorld().setBlock(pos, ModRegistry.NULL_WHITE().defaultBlockState(), 3)
-		}*/
-
 		if (targetCheck && !obstructedCheck) {
 			changeBlock(pos)
 			startSearch()
+
+			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+				getWorld().setBlock(pos, Blocks.GREEN_STAINED_GLASS.defaultBlockState(), 3)
+			}
 		} else {
 			visitedPositions.add(closet.asLong())
+
+			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+				getWorld().setBlock(pos, Blocks.RED_STAINED_GLASS.defaultBlockState(), 3)
+			}
 		}
 	}
 

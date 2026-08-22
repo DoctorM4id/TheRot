@@ -79,6 +79,7 @@ fabricApi {
 
 repositories {
 	mavenCentral()
+
 	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
 }
@@ -101,8 +102,6 @@ dependencies {
 	modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
 	//  implementation(libs.moulberry.mixinconstraints)
 	// include(libs.moulberry.mixinconstraints)
-	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	//modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
 	// modLocalRuntime("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
-
-	modImplementation("net.fabricmc:fabric-language-kotlin:${prop("deps.fabric-language-kotlin")}")
 }

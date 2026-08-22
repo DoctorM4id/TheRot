@@ -1,5 +1,6 @@
 package dev.doctorm4id.rot.systems
 
+import dev.doctorm4id.rot.core.ModContent
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.doctorm4id.rot.stoatutil.StoatBlockUtil
 import dev.doctorm4id.rot.stoatutil.PoolBlocks
@@ -17,8 +18,8 @@ import net.minecraft.world.level.block.state.properties.Property
 object InfestationSystem {
 
 	private val randomCyst = PoolBlocks.apply {
-		addEntry(ModRegistry.ROTTED_BLOCK(), 150)
-		addEntry(ModRegistry.BLOOMING_CYST(), 10)
+		addEntry(ModContent.ROTTED_BLOCK, 150)
+		//addEntry(ModRegistry.BLOOMING_CYST(), 10)
 	}
 
 	fun infestPosition(level: ServerLevel, pos: BlockPos) {
@@ -43,10 +44,10 @@ object InfestationSystem {
 		val blockState = level.getBlockState(pos)
 
 		val newState = when (blockState) {
-			is StairBlock -> ModRegistry.ROTTED_STAIR().defaultBlockState()
+/*			is StairBlock -> ModRegistry.ROTTED_STAIR().defaultBlockState()
 				.copyProperties(blockState, StairBlock.FACING, StairBlock.HALF, StairBlock.SHAPE, BlockStateProperties.WATERLOGGED)
 			is SlabBlock -> ModRegistry.ROTTED_SLAB().defaultBlockState()
-				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)
+				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)*/
 			else -> {
 				if (StoatBlockUtil.isSolid(pos, level)) cyst.defaultBlockState() else return
 			}

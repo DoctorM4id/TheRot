@@ -90,6 +90,7 @@ neoForge {
 }
 
 repositories {
+
 	mavenCentral()
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") {
 		name = "Modrinth"
@@ -121,6 +122,9 @@ dependencies {
 			prefer("1.6.0")
 		}
 	}
+
+	//implementation("maven.modrinth:u9SU7fm1:FynWnuN5")
+	implementation(files("libs/stoatlib-0.1.0-alpha.2-neoforge+1.21.1-SNAPSHOT.jar"))
 }
 
 tasks.named("createMinecraftArtifacts") {

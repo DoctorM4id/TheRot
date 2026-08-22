@@ -3,20 +3,26 @@ package dev.doctorm4id.rot.platform.neoforge
 //? neoforge {
 
 import dev.doctorm4id.rot.TheRot
+import dev.doctorm4id.rot.core.ModContent
 import dev.doctorm4id.rot.core.ModRegistry
 import dev.doctorm4id.rot.event.ExampleEventHandler
 import dev.doctorm4id.rot.systems.CursorManager
+import io.ejekta.kambrik.registration.KambrikRegistrar
+import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.resources.ResourceKey
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.BlockEntityType
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent
 import net.neoforged.neoforge.event.tick.ServerTickEvent
 import net.neoforged.neoforge.registries.DeferredRegister
 import net.neoforged.neoforge.registries.RegisterEvent
-
 
 @EventBusSubscriber
 object NeoforgeEventSubscriber {
@@ -33,24 +39,14 @@ object NeoforgeEventSubscriber {
 
 	@JvmStatic
 	@SubscribeEvent
-	fun onRegister(event: RegisterEvent) {
-		ModRegistry.registerAll { id, supplier ->
-			when (event.registryKey) {
-				BuiltInRegistries.BLOCK.key() -> {
-					val obj = supplier()
-					if (obj is Block) {
-						event.register(BuiltInRegistries.BLOCK.key(), id) { obj }
-					}
-				}
-				BuiltInRegistries.ITEM.key() -> {
-					val obj = supplier()
-					if (obj is Item) {
-						event.register(BuiltInRegistries.ITEM.key(), id) { obj }
-					}
-				}
+	fun registerRegistryContent(evt: RegisterEvent) {
+		KambrikRegistrar[ModContent].content.forEach { entry ->
+			evt.register(entry.registry.key() as ResourceKey<out Registry<Any>>) {
+				it.register(ResourceLocation.fromNamespaceAndPath(ModContent.getId(), entry.itemId), entry.item.value!!)
 			}
 		}
 	}
+
 
 	@JvmStatic
 	@SubscribeEvent

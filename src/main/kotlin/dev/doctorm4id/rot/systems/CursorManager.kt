@@ -1,7 +1,12 @@
 package dev.doctorm4id.rot.systems
 
+import dev.doctorm4id.rot.TheRot
+import dev.doctorm4id.rot.core.ModContent
+import io.ejekta.kambrik.ext.ResourceLocation
 import net.minecraft.core.BlockPos
+import net.minecraft.core.registries.Registries
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.tags.TagKey
 
 object CursorManager {
 	private val virtualCursor = VirtualCursorList()
