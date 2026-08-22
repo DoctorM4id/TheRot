@@ -14,7 +14,7 @@ class VirtualSurfaceInfectorCursor(level: ServerLevel) : VirtualCursor(level) {
 
 	override fun isTarget(level: Level, pos: BlockPos): Boolean {
 		val blockState = getWorld().getBlockState(pos)
-		return !blockState.`is`(ModContent.BlockTags.ROT_FAMILY)// && shouldInfest(level, pos)
+		return !blockState.`is`(ModContent.BlockTags.ROT_FAMILY) && shouldInfest(level, pos)
 	}
 
 	override fun changeBlock(pos: BlockPos) {
@@ -34,21 +34,21 @@ class VirtualSurfaceInfectorCursor(level: ServerLevel) : VirtualCursor(level) {
 			return true
 		}
 
-		return !shouldInfest(getWorld(), pos)
+		return false //!shouldInfest(getWorld(), pos)
 	}
 
 	fun shouldInfest(level: Level, pos: BlockPos): Boolean {
 		val neighbors = StoatBlockUtil.getNeighborsCube(pos, false).filterNotNull()
 
 		val rotNeighbors = neighbors.count { level.getBlockState(it).`is`(ModContent.BlockTags.ROT_FAMILY) }
-		val exposed = if (StoatBlockUtil.isExposedToAir(pos, level)) 1.0 else 0.05
+		val exposed = if (StoatBlockUtil.isExposedToAir(pos, level)) 1.0 else 0.2
 		val wetBonus = if (level.getFluidState(pos).isSource) 0.2 else 0.0
-		val distance = if (StoatBlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.2
+		val distance = if (StoatBlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.5
 
-		val base = 0.05
-		val chance = (base + (rotNeighbors * 0.4).coerceIn(0.0, 1.0))
+		val base = 0.15
+		val chance = (((base + (rotNeighbors * 0.2).coerceIn(0.0, 1.0)) * exposed) * distance)
 
-		val willInfest = level.random.nextDouble() < chance.coerceIn(0.0, 1.0)
+		val willInfest = level.random.nextDouble() < chance.coerceIn(0.0, 0.95)
 
 		return willInfest
 	}
