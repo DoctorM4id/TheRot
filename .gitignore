@@ -3,7 +3,6 @@
 .kotlin
 .cache/
 build/
-build-logic/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
