@@ -1,6 +1,7 @@
 package dev.doctorm4id.rot.content
 
 import dev.doctorm4id.rot.TheRot
+import dev.doctorm4id.rot.content.block.BloomingCystBlock
 import dev.doctorm4id.rot.content.block.RottedFloraBlock
 import dev.doctorm4id.rot.content.item.CursorWand
 import dev.doctorm4id.rot.content.item.InfestWand
@@ -11,6 +12,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.Rarity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.FenceBlock
 import net.minecraft.world.level.block.LeavesBlock
@@ -23,16 +25,23 @@ import net.minecraft.world.level.material.MapColor
 
 object ModContent : KambrikAutoRegistrar {
 
-	val CURSOR_WAND_ITEM by "cursor_wand" forItem { CursorWand(Item.Properties()) }
+	val CURSOR_WAND_ITEM by "cursor_wand" forItem { CursorWand(Item.Properties().rarity(Rarity.EPIC) ) }
 
-	val INFEST_WAND_ITEM by "infest_wand" forItem { InfestWand(Item.Properties()) }
+	val INFEST_WAND_ITEM by "infest_wand" forItem { InfestWand(Item.Properties().rarity(Rarity.EPIC) ) }
 
+
+
+	val BLOOMING_CYST_BLOCK by "blooming_cyst" forBlock { BloomingCystBlock(BlockBehaviour.Properties.of()
+		.sound(SoundType.HONEY_BLOCK)
+		.mapColor(MapColor.COLOR_BLACK)
+	) }
+	val BLOOMING_CYST_ITEM by "blooming_cyst" forItem { BlockItem(ROTTED_BLOCK, Item.Properties().rarity(Rarity.RARE) ) }
 
 	val ROTTED_BLOCK by "rotted_block" forBlock { Block(BlockBehaviour.Properties.of()
 		.sound(SoundType.HONEY_BLOCK)
 		.mapColor(MapColor.COLOR_BLACK)
 	) }
-	val ROTTED_BLOCK_ITEM by "rotted_block" forItem { BlockItem(ROTTED_BLOCK, Item.Properties()) }
+	val ROTTED_BLOCK_ITEM by "rotted_block" forItem { BlockItem(ROTTED_BLOCK, Item.Properties().rarity(Rarity.UNCOMMON) ) }
 
 	val ROTTED_SLAB by "rotted_slab" forBlock { SlabBlock(StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK)) }
 	val ROTTED_SLAB_ITEM by "rotted_slab" forItem { BlockItem(ROTTED_SLAB, Item.Properties()) }
@@ -52,9 +61,9 @@ object ModContent : KambrikAutoRegistrar {
 	val ROTTED_GRASS by "rotted_grass" forBlock { RottedFloraBlock(StoatCommonUtil.copyBlockProperties(ROTTED_BLOCK).noCollission().instabreak()) }
 	val ROTTED_GRASS_ITEM by "rotted_grass" forItem { BlockItem(ROTTED_GRASS, Item.Properties()) }
 
-	val NULL_CYAN by "null_cyan" forBlock { Block(BlockBehaviour.Properties.of()) }
+	val NULL_CYAN by "null_cyan" forBlock { Block(BlockBehaviour.Properties.of() ) }
 
-	val NULL_PINK by "null_pink" forBlock { Block(BlockBehaviour.Properties.of()) }
+	val NULL_PINK by "null_pink" forBlock { Block(BlockBehaviour.Properties.of() ) }
 
 	override fun getId(): String = TheRot.MOD_ID
 
