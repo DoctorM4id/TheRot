@@ -8,7 +8,7 @@ This project uses a dual-licensing structure to separate the functional source c
 
 ## 1. Source Code (MIT License)
 
-Copyright (c) 2026 DoctorM4id / StoatDev
+Copyright (c) 2026 DoctorM4id
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
