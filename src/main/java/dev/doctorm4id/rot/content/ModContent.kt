@@ -5,9 +5,9 @@ import dev.doctorm4id.rot.content.block.BloomingCystBlock
 import dev.doctorm4id.rot.content.block.RottedFloraBlock
 import dev.doctorm4id.rot.content.item.CursorWand
 import dev.doctorm4id.rot.content.item.InfestWand
+import dev.doctorm4id.stoatlib.registration.StoatAutoRegistrar
 import dev.doctorm4id.stoatlib.util.StoatCommonUtil
 import io.ejekta.kambrik.ext.ResourceLocation
-import io.ejekta.kambrik.registration.KambrikAutoRegistrar
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.BlockItem
@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.WallBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.MapColor
 
-object ModContent : KambrikAutoRegistrar {
+object ModContent : StoatAutoRegistrar {
 
 	val CURSOR_WAND_ITEM by "cursor_wand" forItem { CursorWand(Item.Properties().rarity(Rarity.EPIC) ) }
 

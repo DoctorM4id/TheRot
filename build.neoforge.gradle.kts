@@ -124,7 +124,7 @@ dependencies {
 	}
 
 	//implementation("maven.modrinth:u9SU7fm1:FynWnuN5")
-	implementation(files("libs/stoatlib-0.1.0-alpha.2-neoforge+1.21.1-SNAPSHOT.jar"))
+	implementation(files("libs/stoatlib-0.1.0-alpha.3-neoforge+1.21.1-SNAPSHOT.jar"))
 }
 
 tasks.named("createMinecraftArtifacts") {

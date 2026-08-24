@@ -5,7 +5,7 @@ package dev.doctorm4id.rot.platform.neoforge
 import dev.doctorm4id.rot.content.ModContent
 import dev.doctorm4id.rot.event.ExampleEventHandler
 import dev.doctorm4id.rot.systems.CursorManager
-import io.ejekta.kambrik.registration.KambrikRegistrar
+import dev.doctorm4id.stoatlib.registration.StoatRegistrar
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
@@ -32,7 +32,7 @@ object NeoforgeEventSubscriber {
 	@JvmStatic
 	@SubscribeEvent
 	fun registerRegistryContent(evt: RegisterEvent) {
-		KambrikRegistrar[ModContent].content.forEach { entry ->
+		StoatRegistrar[ModContent].content.forEach { entry ->
 			evt.register(entry.registry.key() as ResourceKey<out Registry<Any>>) {
 				it.register(ResourceLocation.fromNamespaceAndPath(ModContent.getId(), entry.itemId), entry.item.value!!)
 			}

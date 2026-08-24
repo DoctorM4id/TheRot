@@ -8,14 +8,17 @@ import net.minecraft.core.particles.SculkChargeParticleOptions
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
+import net.minecraft.world.level.block.SlabBlock
+import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.Property
 
 object InfestationSystem {
 
 	private val randomCyst = PoolBlocks.apply {
 		addEntry(ModContent.ROTTED_BLOCK, 150)
-		//addEntry(ModRegistry.BLOOMING_CYST(), 10)
+		addEntry(ModContent.BLOOMING_CYST_BLOCK, 10)
 	}
 
 	fun infestPosition(level: ServerLevel, pos: BlockPos) {
@@ -40,10 +43,10 @@ object InfestationSystem {
 		val blockState = level.getBlockState(pos)
 
 		val newState = when (blockState) {
-/*			is StairBlock -> ModRegistry.ROTTED_STAIR().defaultBlockState()
+			is StairBlock -> ModContent.ROTTED_STAIR.defaultBlockState()
 				.copyProperties(blockState, StairBlock.FACING, StairBlock.HALF, StairBlock.SHAPE, BlockStateProperties.WATERLOGGED)
-			is SlabBlock -> ModRegistry.ROTTED_SLAB().defaultBlockState()
-				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)*/
+			is SlabBlock -> ModContent.ROTTED_SLAB. defaultBlockState()
+				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)
 			else -> {
 				if (StoatBlockUtil.isSolid(pos, level)) cyst.defaultBlockState() else return
 			}
