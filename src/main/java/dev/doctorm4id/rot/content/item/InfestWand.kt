@@ -12,7 +12,7 @@ class InfestWand(properties : Properties) : Item(properties) {
 	override fun useOn(ctx: UseOnContext): InteractionResult {
 		val level = ctx.level
 		if (level is ServerLevel) {
-			val targetPos: BlockPos = ctx.clickedPos.relative(ctx.clickedFace)
+			val targetPos: BlockPos = ctx.clickedPos
 
 			InfestationSystem.infestPosition(level, targetPos)
 
