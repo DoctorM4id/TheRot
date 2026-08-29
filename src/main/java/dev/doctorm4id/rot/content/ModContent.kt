@@ -5,9 +5,9 @@ import dev.doctorm4id.rot.content.block.BloomingCystBlock
 import dev.doctorm4id.rot.content.block.RottedFloraBlock
 import dev.doctorm4id.rot.content.item.CursorWand
 import dev.doctorm4id.rot.content.item.InfestWand
+import dev.doctorm4id.stoatlib.ext.ResourceLocation
 import dev.doctorm4id.stoatlib.registration.StoatAutoRegistrar
 import dev.doctorm4id.stoatlib.util.StoatCommonUtil
-import io.ejekta.kambrik.ext.ResourceLocation
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.BlockItem
@@ -35,7 +35,7 @@ object ModContent : StoatAutoRegistrar {
 		.sound(SoundType.HONEY_BLOCK)
 		.mapColor(MapColor.COLOR_BLACK)
 	) }
-	val BLOOMING_CYST_ITEM by "blooming_cyst" forItem { BlockItem(ROTTED_BLOCK, Item.Properties().rarity(Rarity.RARE) ) }
+	val BLOOMING_CYST_ITEM by "blooming_cyst" forItem { BlockItem(BLOOMING_CYST_BLOCK, Item.Properties().rarity(Rarity.RARE) ) }
 
 	val ROTTED_BLOCK by "rotted_block" forBlock { Block(BlockBehaviour.Properties.of()
 		.sound(SoundType.HONEY_BLOCK)
@@ -71,7 +71,7 @@ object ModContent : StoatAutoRegistrar {
 		val ROT_FAMILY: TagKey<Block> = create("rot_family")
 
 		private fun create(name: String): TagKey<Block> {
-			return TagKey.create(Registries.BLOCK, ResourceLocation(TheRot.MOD_ID, name))
+			return TagKey.create(Registries.BLOCK, ResourceLocation(getId(), name))
 		}
 
 		private fun createMinecraft(name: String): TagKey<Block> {
