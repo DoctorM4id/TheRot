@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "rot:rotted_block",
-    "rot:null_cyan"
+    "rot:null_cyan",
+    "rot:rotted_leaves",
+    "rot:rotted_stair",
+    "rot:rotted_slab"
   ]
 }
