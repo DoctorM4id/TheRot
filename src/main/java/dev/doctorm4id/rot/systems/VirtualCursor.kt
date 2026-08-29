@@ -88,16 +88,12 @@ open class VirtualCursor(var level: Level) : ICursor {
 
 			val currentBlock = searchQueue.poll() ?: return@repeat
 
-
-			if (!level.getBlockState(currentBlock).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+/*			if (!level.getBlockState(currentBlock).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 				level.setBlock(currentBlock, Blocks.WHITE_STAINED_GLASS.defaultBlockState(), 3)
-			}
+			}*/
 
-
-			//if (currentBlock != pos && isTarget(level, currentBlock) && shouldInfest(level, currentBlock)) {
 			if (currentBlock != pos && isTarget(level, currentBlock)) {
 				target = currentBlock
-				//println(currentBlock)
 
 				return true
 			}
@@ -112,9 +108,9 @@ open class VirtualCursor(var level: Level) : ICursor {
 				if (positionsSearched.add(longPos) && !isObstructed(getWorld().getBlockState(neighbor), neighbor)) {
 					searchQueue.add(neighbor)
 
-					if (!level.getBlockState(neighbor).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+/*					if (!level.getBlockState(neighbor).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 						level.setBlock(neighbor, Blocks.LIGHT_GRAY_STAINED_GLASS.defaultBlockState(), 3)
-					}
+					}*/
 				}
 			}
 		}
@@ -142,8 +138,6 @@ open class VirtualCursor(var level: Level) : ICursor {
 			return
 		}
 
-		//getWorld().setBlock(pos, ModRegistry.NULL_CYAN().defaultBlockState(), 3)
-
 		for (offset in NEIGHBOR_OFFSETS) {
 			val neighbor = pos.offset(offset)
 			if (!isObstructed(getWorld().getBlockState(neighbor), neighbor)) {
@@ -158,8 +152,6 @@ open class VirtualCursor(var level: Level) : ICursor {
 
 		moveTo(closet.x, closet.y, closet.z)
 
-		//getWorld().setBlock(pos, ModRegistry.NULL_BLUE().defaultBlockState(), 3)
-
 		val targetCheck = isTarget(level, pos)
 		val obstructedCheck = isObstructed(getWorld().getBlockState(pos), pos)
 
@@ -167,34 +159,17 @@ open class VirtualCursor(var level: Level) : ICursor {
 			changeBlock(pos)
 			startSearch()
 
-			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+/*			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 				getWorld().setBlock(pos, Blocks.GREEN_STAINED_GLASS.defaultBlockState(), 3)
-			}
+			}*/
 		} else {
 			visitedPositions.add(closet.asLong())
 
-			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
+/*			if (!level.getBlockState(pos).`is`(ModContent.BlockTags.ROT_FAMILY)) {
 				getWorld().setBlock(pos, Blocks.RED_STAINED_GLASS.defaultBlockState(), 3)
-			}
+			}*/
 		}
 	}
-
-/*	fun shouldInfest(level: Level, pos: BlockPos): Boolean {
-
-		val neighbors = BlockUtil.getNeighborsCube(pos, false).filterNotNull()
-
-		val rotNeighbors = neighbors.count { level.getBlockState(it).`is`(ModRegistry.BlockTags.ROT_FAMILY) }
-		val exposed = if (BlockUtil.isExposedToAir(pos, level)) 1.0 else 0.05
-		//val darkness = 15 - level.getMaxLocalRawBrightness(pos)
-		val wetBonus = if (level.getFluidState(pos).isSource) 0.2 else 0.0
-		val distance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 10 * 10) 1.0 else 0.2
-		val maxDistance = if (BlockUtil.getBlockDistanceSquared(origin, pos) < 15 * 15) 1.0 else 0.1
-
-		val base = 0.02
-		val chance = (((base + rotNeighbors * 0.1 *//*+ darkness * 0.01*//* + wetBonus) * exposed) * distance) * maxDistance
-		return level.random.nextDouble() < chance.coerceIn(0.0, 0.95)
-	}*/
-
 
 	override fun getID(): UUID = UUID(0L, id)
 
