@@ -3,11 +3,13 @@ package dev.doctorm4id.rot.systems
 import dev.doctorm4id.rot.content.ModContent
 import dev.doctorm4id.stoatlib.util.PoolBlocks
 import dev.doctorm4id.stoatlib.util.StoatBlockUtil
+
 import net.minecraft.core.BlockPos
 import net.minecraft.core.particles.SculkChargeParticleOptions
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
+import net.minecraft.world.level.block.LeavesBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.state.BlockState
@@ -17,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.Property
 object InfestationSystem {
 
 	private val randomCyst = PoolBlocks.apply {
-		addEntry(ModContent.ROTTED_BLOCK, 150)
+		addEntry(ModContent.ROTTED_BLOCK, 100)
 		addEntry(ModContent.BLOOMING_CYST_BLOCK, 10)
 	}
 
@@ -42,32 +44,26 @@ object InfestationSystem {
 		val cyst = randomCyst.getRandomEntry() ?: return
 		val blockState = level.getBlockState(pos)
 
-		val newState = when (blockState) {
+		val newState = when (val block = level.getBlockState(pos).block) {
 			is StairBlock -> ModContent.ROTTED_STAIR.defaultBlockState()
-				.copyProperties(blockState, StairBlock.FACING, StairBlock.HALF, StairBlock.SHAPE, BlockStateProperties.WATERLOGGED)
-			is SlabBlock -> ModContent.ROTTED_SLAB. defaultBlockState()
-				.copyProperties(blockState, SlabBlock.TYPE, BlockStateProperties.WATERLOGGED)
+				.setValue(StairBlock.FACING, blockState.getValue(StairBlock.FACING))
+				.setValue(StairBlock.HALF, blockState.getValue(StairBlock.HALF))
+				.setValue(StairBlock.SHAPE, blockState.getValue(StairBlock.SHAPE))
+				.setValue(BlockStateProperties.WATERLOGGED, blockState.getValue(BlockStateProperties.WATERLOGGED))
+
+			is SlabBlock -> ModContent.ROTTED_SLAB.defaultBlockState()
+				.setValue(SlabBlock.TYPE, blockState.getValue(SlabBlock.TYPE))
+				.setValue(BlockStateProperties.WATERLOGGED, blockState.getValue(BlockStateProperties.WATERLOGGED))
+
+			is LeavesBlock -> ModContent.ROTTED_LEAVES.defaultBlockState()
+				.setValue(BlockStateProperties.WATERLOGGED, blockState.getValue(BlockStateProperties.WATERLOGGED))
+				.setValue(LeavesBlock.PERSISTENT, true)
+
 			else -> {
 				if (StoatBlockUtil.isSolid(pos, level)) cyst.defaultBlockState() else return
 			}
 		}
 
 		level.setBlock(pos, newState, 3)
-	}
-
-	private fun BlockState.copyProperties(source: BlockState, vararg properties: Property<*>): BlockState {
-		var current = this
-
-		for (prop in properties) {
-			if (source.hasProperty(prop) && current.hasProperty(prop)) {
-				current = copyProp(source, current, prop)
-			}
-		}
-
-		return current
-	}
-
-	private fun <T : Comparable<T>> copyProp(source: BlockState, target: BlockState, prop: Property<T>): BlockState {
-		return target.setValue(prop, source.getValue(prop))
 	}
 }
