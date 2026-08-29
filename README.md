@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://modrinth.com/mod/rot"><img src="https://cdn.modrinth.com/data/cached_images/e64ab636b5dba1472db753a0b48677c6061a31a4.png"></a>
+<a href="https://modrinth.com/mod/rot"><img src="https://cdn.modrinth.com/data/cached_images/f1698416c9df561321f50707e18b01fa1906cb10.png"></a>
 
 <div align="center">
 <a href="https://modrinth.com/mod/fabric-api"><img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/fabric-api_64h.png">
